@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Roles</h1>
+  <form method="post" action="{% url 'role_create' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <th><label for="name_rol">Rol de Usuario:</label></th>
+        <td><input type="text" id="name_rol" name="name_rol" value="{{ form.name_rol.value }}"></td>
+      </tr>
+    </table>
+    <button type="submit">Create</button>
+  </form>
+{% endblock %}

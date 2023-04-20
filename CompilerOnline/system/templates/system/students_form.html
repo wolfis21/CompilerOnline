@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Student</h1>
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <th><label for="first_name">First name:</label></th>
+        <td><input type="text" id="first_name" name="first_name" value="{{ form.first_name.value }}"></td>
+      </tr>
+      <tr>
+        <th><label for="last_name">Last name:</label></th>
+        <td><input type="text" id="last_name" name="last_name" value="{{ form.last_name.value }}"></td>
+      </tr>
+      <tr>
+        <th><label for="email">Email:</label></th>
+        <td><input type="email" id="email" name="email" value="{{ form.email.value }}"></td>
+      </tr>
+      <tr>
+        <th><label for="phone_number">Phone number:</label></th>
+        <td><input type="text" id="phone_number" name="phone_number" value="{{ form.phone_number.value }}"></td>
+      </tr>
+      <tr>
+        <th><label for="birthdate">Birthdate:</label></th>
+        <td><input type="date" id="birthdate" name="birthdate" value="{{ form.birthdate.value }}"></td>
+      </tr>
+    </table>
+    <button type="submit">Create</button>
+  </form>
+{% endblock %}
