@@ -22,13 +22,13 @@ class StudentDetailView(DetailView):
 class StudentCreateView(CreateView):
     model = Students
     fields = ['name', 'last_name', 'question_u',
-              'response_u', 'students_projects']
+              'response_u','users_id', 'students_projects']
 
 
 class StudentUpdateView(UpdateView):
     model = Students
     fields = ['name', 'last_name', 'question_u',
-              'response_u', 'students_projects']
+              'response_u','users_id', 'students_projects']
 
 
 class StudentDeleteView(DeleteView):
@@ -46,12 +46,12 @@ class UserDetailView(DetailView):
 
 class UserCreateView(CreateView):
     model = Users
-    fields = ['name_u', 'password', 'email', 'roles_id', 'students_id']
+    fields = ['name_u', 'password', 'email', 'roles_id']
 
 
 class UserUpdateView(UpdateView):
     model = Users
-    fields = ['name_u', 'password', 'email', 'roles_id', 'students_id']
+    fields = ['name_u', 'password', 'email', 'roles_id']
 
 
 class UserDeleteView(DeleteView):

@@ -11,13 +11,13 @@ class Students(models.Model):
     question_u =models.CharField(max_length=200, verbose_name='Pregunta de seguridad')
     response_u =models.CharField(max_length=200, verbose_name='Respuesta correcta')
     students_projects = models.ManyToManyField('Projects')
+    users_id=models.ForeignKey('Users', on_delete=models.CASCADE)
 
 class Users(models.Model):
     name_u =models.CharField(max_length=200, verbose_name='nombre de usuario')
-    password =models.CharField(max_length=200, verbose_name='Contraseña')
     email = models.EmailField()
+    password =models.CharField(max_length=200, verbose_name='Contraseña')
     roles_id = models.ForeignKey(Roles, on_delete=models.CASCADE)
-    students_id=models.ForeignKey(Students, on_delete=models.CASCADE)
 
 class Projects(models.Model):
     descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
