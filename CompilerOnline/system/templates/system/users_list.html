@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Lista de Usuarios</h1>
+  <ul>
+    {% for user in object_list %}
+      <li><a href="{% url 'user_detail' users.pk %}">{{ user.name_u }}</a></li>
+    {% empty %}
+      <li>No hay estudiantes</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'user_create' %}">Crear nuevo estudiante</a>
+{% endblock %}
+
+<!-- 
+
+  Tiene errores, no funciona
+ -->

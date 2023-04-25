@@ -13,6 +13,7 @@ class Students(models.Model):
     students_projects = models.ManyToManyField('Projects')
     users_id=models.ForeignKey('Users', on_delete=models.CASCADE)
 
+
 class Users(models.Model):
     name_u =models.CharField(max_length=200, verbose_name='nombre de usuario')
     email = models.EmailField()
@@ -33,13 +34,16 @@ class StudentsProjects(models.Model):
     student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
     project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
 
+
 class Container(models.Model):
     title = models.CharField(max_length=200, verbose_name='titulo')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
+
 
 ##Relacion m a n (pibote)
 
 class ProjectsContainer(models.Model):
     projects_id =models.ForeignKey(Projects, on_delete=models.CASCADE)
     container_id = models.ForeignKey(Container, on_delete=models.CASCADE)
+

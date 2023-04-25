@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from .views import (
     StudentListView, StudentDetailView, StudentCreateView, StudentUpdateView, StudentDeleteView,
-    UserListView, UserDetailView, UserCreateView, UserUpdateView, UserDeleteView,
+    UsersListView, UsersDetailView, UsersCreateView, UsersUpdateView, UsersDeleteView,
     RoleListView, RoleDetailView, RoleCreateView, RoleUpdateView, RoleDeleteView,
     ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView,
     ContainerListView, ContainerDetailView, ContainerCreateView, ContainerUpdateView, ContainerDeleteView
@@ -16,11 +16,11 @@ urlpatterns = [
     path('students/<int:pk>/update/', StudentUpdateView.as_view(), name='student_update'),
     path('students/<int:pk>/delete/', StudentDeleteView.as_view(), name='student_delete'),
 
-    path('users/', UserListView.as_view(), name='user_list'),
-    path('users/<int:pk>/', UserDetailView.as_view(), name='user_detail'),
-    path('users/create/', UserCreateView.as_view(), name='user_create'),
-    path('users/<int:pk>/update/', UserUpdateView.as_view(), name='user_update'),
-    path('users/<int:pk>/delete/', UserDeleteView.as_view(), name='user_delete'),
+    path('users/', UsersListView.as_view(), name='user_list'),
+    path('users/<int:pk>/', UsersDetailView.as_view(), name='user_detail'),
+    path('users/create/', UsersCreateView.as_view(), name='user_create'),
+    path('users/<int:pk>/update/', UsersUpdateView.as_view(), name='user_update'),
+    path('users/<int:pk>/delete/', UsersDeleteView.as_view(), name='user_delete'),
 
     #Esto no se implementara
     path('roles/', RoleListView.as_view(), name='role_list'),

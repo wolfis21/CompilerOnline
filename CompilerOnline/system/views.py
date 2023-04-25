@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from .models import Roles
-from .forms import RoleForm
+from .forms import RoleForm, UsersForm
 
 # Create your views here.
 
@@ -22,7 +22,8 @@ class StudentDetailView(DetailView):
 class StudentCreateView(CreateView):
     model = Students
     fields = ['name', 'last_name', 'question_u',
-              'response_u','users_id', 'students_projects']
+              'response_u','users_id']
+    success_url = reverse_lazy('index')
 
 
 class StudentUpdateView(UpdateView):
@@ -36,29 +37,26 @@ class StudentDeleteView(DeleteView):
     success_url = reverse_lazy('student_list')
 
 
-class UserListView(ListView):
+class UsersListView(ListView):
     model = Users
 
-
-class UserDetailView(DetailView):
+class UsersDetailView(DetailView):
     model = Users
 
-
-class UserCreateView(CreateView):
+class UsersCreateView(CreateView):
     model = Users
-    fields = ['name_u', 'password', 'email', 'roles_id']
+    fields = ['name_u', 'email', 'password', 'roles_id']
+    success_url = reverse_lazy('index')
 
 
-class UserUpdateView(UpdateView):
+class UsersUpdateView(UpdateView):
     model = Users
-    fields = ['name_u', 'password', 'email', 'roles_id']
+    fields = ['name_u', 'email', 'password', 'roles_id']
+    success_url = reverse_lazy('index')
 
-
-class UserDeleteView(DeleteView):
+class UsersDeleteView(DeleteView):
     model = Users
-    success_url = reverse_lazy('user_list')
-
-
+    success_url = reverse_lazy('index')
 class RoleListView(ListView):
     model = Roles
 

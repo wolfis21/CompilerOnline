@@ -2,28 +2,32 @@
 
 {% block content %}
   <h1>Create Student</h1>
+  <span>Esto sera puesto despues de haberse creado un user</span>
+  <p>con el fin de ser informacion complementaria necesaria para el perfil</p>
   <form method="post">
     {% csrf_token %}
     <table>
-      <tr>
-        <th><label for="first_name">First name:</label></th>
-        <td><input type="text" id="first_name" name="first_name" value="{{ form.first_name.value }}"></td>
+      <tr> <!-- pensar un poco este desarrollo porque es rebundante  -->
+        <th><label for="name">First name:</label></th>
+        <td><input type="text" id="name" name="name" value="{{ form.name.value }}"></td>
       </tr>
       <tr>
         <th><label for="last_name">Last name:</label></th>
         <td><input type="text" id="last_name" name="last_name" value="{{ form.last_name.value }}"></td>
       </tr>
       <tr>
-        <th><label for="email">Email:</label></th>
-        <td><input type="email" id="email" name="email" value="{{ form.email.value }}"></td>
+        <th><label for="question_u">Escribeme una pregunta de seguridad:</label></th>
+        <span>de tu preferencia que no se te olvide...</span>
+        <td><input type="text" id="question_u" name="question_u" value="{{ form.question_u.value }}"></td>
       </tr>
       <tr>
-        <th><label for="phone_number">Phone number:</label></th>
-        <td><input type="text" id="phone_number" name="phone_number" value="{{ form.phone_number.value }}"></td>
+        <th><label for="response_u">Respuesta:</label></th>
+        <td><input type="text" id="response_u" name="response_u" value="{{ form.response_u.value }}"></td>
       </tr>
       <tr>
-        <th><label for="birthdate">Birthdate:</label></th>
-        <td><input type="date" id="birthdate" name="birthdate" value="{{ form.birthdate.value }}"></td>
+          <!-- esta parte de seleccion de users_id, se agarrara de el inicio de seccion -->
+            <th><label for="users_id">type de rol:</label></th>
+            <td><input type="text" id="users_id" name="users_id" value="2"></td>
       </tr>
     </table>
     <button type="submit">Create</button>
