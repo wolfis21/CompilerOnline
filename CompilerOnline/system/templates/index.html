@@ -1,16 +1,66 @@
 
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-    <h1>Hola mundo</h1>
-    <span>avances</span>
-    <p> +Estan hechas las migraciones y modelos
-        <br>+la base de datos esta montada
-        <br>+esta funcional el create de roles (no estara habilitado solo es test)
-        <br>+en espera de las vistas
-        <br>+hay que investigar como hacer registros en multiples tablas de una vez
-        porque se amerita esto en todo los crud
-        
-    </p>
+<header class="header">
+    <div class="logo">Logo</div>
+    <nav class="nav">
+        <a href=""><i class="fa-solid fa-plus"></i>New Code</a>
+        <a href=""><i class="fa-regular fa-file"></i>Example</a>
+        <a href="inicioSesion/index.html"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
+        <a href="/users/create/"><i class="fa-regular fa-address-card"></i>Registrarse</a>
+    </nav>
+</header>
+<div class="row-main">
+    <section class="section-left-main">
+        <h3 class="texto-informacion-main">¡Practica y <br> aprende de <br> manera rapida!</h3>
+        <a href="#masInfo" class="boton-mas-informacion">
+            Mas Informacion
+        </a>
+    </section>
+    <section class="section-right-main">
+        <i class="fa-solid fa-mountain-sun main-icon-atras">
+            <i class="fa-solid fa-laptop-code main-icon-adelante"></i>
+        </i>      
+    </section>
+</div>
+
+<div class="container-mas-informacion" id="masInfo">
+    <article class="primer-articulo">
+        <h3>CompilerOnline es un entorno<br>para el aprendizaje y desarrollo<br>
+        en el lenguaje de Python.
+        </h3>
+        <p>Nuestra aplicacion web esta diseñada para aquellos usuarios<br>
+            que quisieran aprender a programar pero no tienen tantos recursos como<br>
+            para descargar todo tipo de compilador o lenguaje de programacion...</p>
+    </article>
+    <article class="segundo-articulo">
+        <section class="segundo-articulo-left">
+            <h3>Gestiona tus<br>proyectos desde<br>tu perfil.</h3>
+            <p>Contamos con una gestion de archivos<br>facil e intuitivos...</p>
+        </section>
+        <section class="segundo-articulo-right">
+            <i class="fa-regular fa-image"></i>
+        </section>
+    </article>
+    <article class="tercer-articulo">
+        <section class="tercer-articulo-left">
+            <i class="fa-regular fa-image"></i>
+        </section>
+        <section class="tercer-articulo-right">
+            <h3>Contamos con<br>soporte.</h3>
+            <p>Si en algun punto al momento de programar<br>
+                o escribir codigo, puedes contactarnos o<br>
+                ver las ayudas que te brindamos.</p>
+        </section>
+    </article>
+    
+</div>
+
+<article class="container-boton-subir">
+    <div class="boton-top"><i class="fa-solid fa-chevron-up"></i></div>
+</article>
 {% endblock %}
  

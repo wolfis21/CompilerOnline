@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-  <h1>Create Student</h1>
+<!--   <h1>Create Student</h1>
   <span>Esto sera puesto despues de haberse creado un user</span>
-  <p>con el fin de ser informacion complementaria necesaria para el perfil</p>
-  <form method="post">
+  <p>con el fin de ser informacion complementaria necesaria para el perfil</p> -->
+  
+  <!-- <form method="post">
     {% csrf_token %}
     <table>
-      <tr> <!-- pensar un poco este desarrollo porque es rebundante  -->
+      <tr> pensar un poco este desarrollo porque es rebundante 
         <th><label for="name">First name:</label></th>
         <td><input type="text" id="name" name="name" value="{{ form.name.value }}"></td>
       </tr>
@@ -25,11 +28,56 @@
         <td><input type="text" id="response_u" name="response_u" value="{{ form.response_u.value }}"></td>
       </tr>
       <tr>
-          <!-- esta parte de seleccion de users_id, se agarrara de el inicio de seccion -->
+          esta parte de seleccion de users_id, se agarrara de el inicio de seccion
             <th><label for="users_id">type de rol:</label></th>
             <td><input type="text" id="users_id" name="users_id" value="2"></td>
       </tr>
     </table>
     <button type="submit">Create</button>
-  </form>
+  </form> -->
+  <header class="header">
+    <div class="logo">Logo</div>
+    <nav class="nav">
+        <a href=""><i class="fa-solid fa-plus"></i>New Code</a>
+        <a href="../inicioSesion/index.html"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
+        <a href="../index.html"><i class="fa-solid fa-xmark"></i>Regresar</a>
+    </nav>
+</header>
+
+<div class="container-registro">
+    <article class="article-registro-inicio">
+        <i class="fa-solid fa-chevron-left"></i>
+        <p>Complemento de Registro</p>
+        <i class="fa-solid fa-chevron-right"></i>
+    </article>
+    <article class="section-formulario-registro">
+        <form action="" method="post" class="formulario-registro">
+            <div class="nombre-registro"><p>Nombre de Estudiante</p><input type="text" class="box" id="name" name="name" value="{{ form.name.value }}"></div>
+            <div class="apellido-registro"><p>Apellido</p><input type="text" class="box" id="last_name" name="last_name" value="{{ form.last_name.value }}"></div>
+            <div class="pregunta-registro"><p>Seleccionar pregunta de seguridad</p></div>
+            <div class="seleccionar-pregunta-registro">
+<!--                 <select name="preguntas">
+                    <option selected disabled>Selecciona una pregunta</option>
+                    <option value="1">¿Mascota favorita?</option>
+                    <option value="2">¿Dulce favorito?</option>
+                    <option value="3">¿Color favorito?</option>
+                </select> -->
+                <input type="text" id="question_u" name="question_u" value="{{ form.question_u.value }}">
+            </div>
+            <div class="respuesta-registro"><p>Respuesta</p></div>
+            <div class="escribir-respuesta-registro"><input type="text" class="box" id="response_u" name="response_u" value="{{ form.response_u.value }}"></div>
+                      
+            <!-- esta parte de seleccion de users_id, se agarrara de el inicio de seccion -->
+                      <div><p>type de rol:</p> </div> 
+                      <div>
+                        <input type="text" id="users_id" name="users_id" value="2">
+                      </div>
+            <div class="contenedor-botones-formulario">
+                <input class="boton-limpiar-registro" type="reset" name="limpiar" value="Limpiar">
+                <input class="boton-registrar-user" type="submit" name="registrar" value="Registrar">
+            </div>
+            <a href="../inicioSesion/index.html" class="recuperarContra">Ya tengo una cuenta bobis jeje</a>
+        </form>
+    </article>
+</div>
 {% endblock %}

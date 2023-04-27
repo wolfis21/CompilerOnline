@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compilator</title>
+    <link rel="stylesheet" href="../mainCss/styles.css">
+    <script src="https://kit.fontawesome.com/c8a64a31fc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">Logo</div>
+        <nav class="nav">
+            <a href=""><i class="fa-solid fa-house-user"></i>Home</a>
+            <a href=""><i class="fa-solid fa-plus"></i>New Code</a>
+            <i class="fa-regular fa-user"></i>
+        </nav>
+    </header>
+
+    <div class="name">
+        <article class="article-inicio-python">
+            <i class="fa-solid fa-chevron-left"></i>
+            <p>Python</p>
+            <i class="fa-solid fa-chevron-right"></i>
+        </article>
+        <div class="linebar"></div>  
+    </div>
+    
+    <div class="container-code">
+        <div class="left-code">
+            <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo</p>
+            <textarea id="python-code"></textarea>
+        </div>
+        <div class="right-code-compile">
+            <p><i class="fa-solid fa-square-poll-horizontal"></i>Mira tu resultado</p>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <div class="error-console">
+        <div class="console">
+            <p><i class="fa-solid fa-circle-exclamation"></i>Console</p>
+            <iframe id="console-log-error"></iframe>
+        </div>
+        <div class="botones-console">
+            <div class="boton-guardar-archivo">
+                <input type="submit" name="guardar" value="Guardar">
+            </div>
+            <div class="boton-guardar-exportar">
+                <input type="submit" name="guardar-y-exportar" value="Guardar y Exportar">
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="contenedor-footer">
+            <p class="titulo-section">¡Siguenos!</p>
+        </div>
+        <div class="redes-sociales">
+            <a href="" class="boton-redes-sociales">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="" class="boton-redes-sociales">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="" class="boton-redes-sociales">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/c8a64a31fc.js" crossorigin="anonymous"></script>
+    <script src="../mainJs/code.js"></script>
+</body>
+</html>

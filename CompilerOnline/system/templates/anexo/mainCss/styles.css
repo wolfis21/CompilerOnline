@@ -1,0 +1,1380 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+}
+
+body{
+    background-color: #0E0B16;
+}
+
+/* header */
+
+.header{
+    padding: 15px;
+    margin: .1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.header .logo{
+    margin-left: 2%;
+}
+
+.header .nav{
+    margin-right: 2%;
+}
+
+.header .nav a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 0 15px;
+}
+
+.header .nav i{
+    padding: 0 6px;
+}
+
+/* main */
+
+.row-main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.row-main .section-left-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.row-main .section-left-main h3{
+    color: #fff;
+    font-size: 45px;
+    align-content: center;
+    text-align: justify;
+    margin-left: 18%;
+    padding: 15px 0 30px;
+}
+
+.row-main .section-left-main .boton-mas-informacion{
+    width: 200px;
+    height: 45px;
+    font-size: 19px;
+    border-radius: 30px;
+    margin-left: 26%;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    /*background: linear-gradient(90deg,#AB00B9,30%,#E20053);*/
+}
+
+
+.boton-mas-informacion:hover{
+    background: #E20053;
+    box-shadow: 0 0 10px #E20053, 0 0 20px #E20053 , 0 0 40px #E20053;
+    transition-delay: 1s;
+}
+
+.row-main .section-right-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+
+.row-main .section-right-main i.main-icon-atras{
+    color: #105B16;
+    font-size: 400px;
+    position: relative;
+    border: none;
+    outline: none;
+}
+
+.row-main .section-right-main i.main-icon-adelante{
+    position: absolute;
+    color: rgb(226,0,83);
+    font-size: 300px;
+    top: 25%;
+    left: -15%;
+    
+}
+
+/* compilador */
+
+.name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+}
+
+.article-inicio-python{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 19.5vh;
+    width: 100%;
+    color: #fff;
+}
+
+.article-inicio-python p{
+    font-size: 25px;
+}
+
+.article-inicio-python i{
+    font-size: 30px;
+    padding: 0 12px;
+}
+
+.linebar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+    height: 0.5vh;
+    background-color: #7A0A7B;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+}
+
+.container-code {
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-code, .right-code-compile{
+    flex-basis: 50%;
+    padding: 10px;
+}
+
+.left-code p{
+    color: #fff;
+    padding: 0 10px 10px;
+}
+
+.left-code p i{
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.left-code textarea{
+    width: 100%;
+    height: 99%;
+    background: #1f1f1f;
+    color: #fff;
+    padding: 30px 25px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    resize: none;
+    border-radius: 10px;
+}
+
+.right-code-compile p{
+    color: #fff;
+    padding: 0 10px 10px;
+}
+
+.right-code-compile p i{
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.right-code-compile iframe{
+    width: 100%;
+    height: 99%;
+    background: #fff;
+    border: none;
+    outline: none;
+    resize: none;
+    border-radius: 10px;
+}
+
+.error-console{
+    display: flex;
+    padding: 20px;
+    width: 100%;
+    height: 50vh;
+}
+
+.console, .botones-console{
+    flex-basis: 50%;
+    padding: 10px;
+}
+
+.error-console .console p{
+    color: #fff;
+    padding: 0 10px 10px;
+}
+
+.error-console .console p i{
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.error-console .console iframe{
+    width: 100%;
+    height: 99%;
+    background: #1f1f1f;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.error-console .botones-console{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.boton-guardar-archivo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+}
+
+.boton-guardar-archivo input:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+.boton-guardar-exportar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.boton-guardar-exportar input:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+.error-console .botones-console input{
+    width: 50%;
+    height: 60px;
+    font-size: 17px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #7A0A7B;
+    transition: .2s;
+}
+
+/* mas informacion */
+
+.container-mas-informacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 220vh;
+    width: 100%;
+}
+
+.container-mas-informacion .primer-articulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70%;
+    width: 100%;
+}
+
+.primer-articulo h3{
+    color: #7B00BD;
+    text-align: center;
+    font-size: 45px;
+    padding: 20px 0 30px;
+}
+
+.primer-articulo p{
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px 0 30px;
+}
+
+.container-mas-informacion .segundo-articulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70%;
+    width: 100%;
+}
+
+.segundo-articulo .segundo-articulo-left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.segundo-articulo-left h3{
+    color: #7B00BD;
+    text-align: center;
+    font-size: 45px;
+    padding: 20px 0 30px;
+}
+
+.segundo-articulo-left p{
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px 0 30px;
+}
+
+.segundo-articulo .segundo-articulo-right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.segundo-articulo-right i{
+    color: #fff;
+    font-size: 400px;
+}
+
+.container-mas-informacion .tercer-articulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 70%;
+    width: 100%;
+}
+
+.tercer-articulo .tercer-articulo-left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tercer-articulo-left i{
+    color: #fff;
+    font-size: 400px;
+}
+
+.tercer-articulo .tercer-articulo-right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tercer-articulo-right h3{
+    color: #7B00BD;
+    text-align: center;
+    font-size: 45px;
+    padding: 20px 0 30px;
+}
+
+.tercer-articulo-right p{
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px 0 30px;
+}
+
+
+.container-boton-subir{
+    width: 66px;
+    height: 66px;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: -1;
+}
+
+.container-boton-subir .boton-top{
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background: #E20053;
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+}
+
+.boton-top i{
+    position: absolute;
+    font-size: 17px;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    color: #fff;
+    transition: .2s;
+}
+
+.show{
+    z-index: 10;
+}
+
+.show .boton-top{
+    animation: popup .3s ease-in-out;
+    width: 66px;
+    height: 66px;
+    z-index: 11;
+    box-shadow: 0 0 10px #E20053, 0 0 20px #E20053 , 0 0 40px #E20053;
+}
+
+.show i{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+@keyframes popup{
+    0%{
+        width: 0px;
+        height: 0px;
+    }
+    50%{
+        width: 80px;
+        height: 80px;
+    }
+    100%{
+        width: 66px;
+        height: 66px;
+    }
+}
+
+/* registro de usuario  */
+
+.container-registro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 130vh;
+}
+
+.article-registro-inicio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    height: 20%;
+    padding: 30px;
+}
+
+.article-registro-inicio p{
+    font-size: 25px;
+}
+
+.article-registro-inicio i{
+    font-size: 30px;
+    padding: 0 12px;
+}
+
+.section-formulario-registro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(76,0,125,0.45);
+    position: relative;
+    width: 80vh;
+    height: 110vh;
+    border-radius: 35px;
+    overflow: hidden;
+    bottom: 30px;
+    box-shadow: 0 0 10px #5F0093, 0 0 20px #5F0093 , 0 0 40px #5F0093;
+}
+
+.section-formulario-registro  form{
+    width: 85%;
+    height: 90%;
+}
+
+.formulario-registro .nombre-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-registro .nombre-registro input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-registro .apellido-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-registro .apellido-registro input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-registro .correo-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-registro .correo-registro input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-registro .password-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px 20px;
+}
+
+.formulario-registro .password-registro input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    align-content: center;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-registro .repetir-password-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px 20px;
+}
+
+.formulario-registro .repetir-password-registro input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    align-content: center;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-registro .pregunta-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px 20px;
+}
+
+
+
+.formulario-registro .seleccionar-pregunta-registro select{
+    width: 100%;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    align-content: center;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+    cursor: pointer;
+    appearance: none;
+}
+
+.formulario-registro .respuesta-registro{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px 20px;
+}
+
+.formulario-registro .escribir-respuesta-registro input{
+    width: 100%;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    align-content: center;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-registro .contenedor-botones-formulario{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    padding: 40px 0 30px;
+}
+
+.formulario-registro .contenedor-botones-formulario .boton-limpiar-registro{
+    width: 40%;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0f0019;
+    transition: .2s;
+}
+
+.boton-limpiar-registro:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+.formulario-registro .contenedor-botones-formulario .boton-registrar-user{
+    width: 40%;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0f0019;
+    transition: .2s;
+}
+
+.boton-registrar-user:hover{
+    box-shadow: 0 0 10px #E20053, 0 0 20px #E20053 , 0 0 40px #E20053;
+    transition-delay: 1s;
+}
+
+.formulario-registro a{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Iniciar Sesion */
+
+.login-inicio-sesion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.article-inicio-sesion{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 30px;
+}
+
+.article-inicio-sesion p{
+    font-size: 25px;
+}
+
+.article-inicio-sesion i{
+    font-size: 30px;
+    padding: 0 12px;
+}
+
+.container-formulario-inicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(76,0,125,0.45);
+    position: relative;
+    width: 80vh;
+    height: 45vh;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #5F0093, 0 0 20px #5F0093 , 0 0 40px #5F0093;
+}
+
+.container-formulario-inicio  form{
+    width: 85%;
+    height: 75%;
+}
+
+.formulario-inicio-sesion .correo-inicio-sesion{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-inicio-sesion .correo-inicio-sesion input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-inicio-sesion .password-inicio-sesion{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px 20px;
+}
+
+.formulario-inicio-sesion .password-inicio-sesion input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    align-content: center;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-inicio-sesion .container-boton-iniciar-sesion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 15px 0 30px;
+}
+
+.formulario-inicio-sesion .container-boton-iniciar-sesion .boton-iniciar-sesion{
+    width: 50%;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0f0019;
+    transition: .2s;
+}
+
+.boton-iniciar-sesion:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+.formulario-inicio-sesion a{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* recuperar password */
+
+.inicio-recuperar-password{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.articulo-inicio-recuperar{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 30px;
+}
+
+.articulo-inicio-recuperar p{
+    font-size: 25px;
+}
+
+.articulo-inicio-recuperar i{
+    font-size: 30px;
+    padding: 0 12px;
+}
+
+.section-recuperar-password{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(76,0,125,0.45);
+    position: relative;
+    width: 80vh;
+    height: 25vh;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #5F0093, 0 0 20px #5F0093 , 0 0 40px #5F0093;
+}
+
+.section-recuperar-password  form{
+    width: 85%;
+    height: 75%;
+}
+
+.formulario-recuperar-password .correo-recuperar-password{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-recuperar-password .correo-recuperar-password input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-recuperar-password .contenedor-boton-recuperar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 15px 0 30px;
+}
+
+.formulario-recuperar-password .contenedor-boton-recuperar .boton-verificar-correo{
+    width: 50%;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0f0019;
+    transition: .2s;
+}
+
+.boton-verificar-correo:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+/* verificar correo con pregunta de seguridad */
+
+.inicio-verificar-correo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.article-inicio-verificar{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 30px;
+}
+
+.article-inicio-verificar p{
+    font-size: 25px;
+    text-align: center;
+}
+
+.article-inicio-verificar i{
+    font-size: 60px;
+    padding: 0 12px;
+}
+
+.section-verificar-correo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(76,0,125,0.45);
+    position: relative;
+    width: 80vh;
+    height: 35vh;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #5F0093, 0 0 20px #5F0093 , 0 0 40px #5F0093;
+}
+
+.section-verificar-correo  form{
+    width: 85%;
+    height: 75%;
+}
+
+.formulario-verificar-correo .correo-verificar{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-verificar-correo .pregunta-verificacion{
+    padding: 10px 0 15px;
+}
+
+.formulario-verificar-correo .pregunta-verificacion input{
+    width: 100%;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    align-content: center;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 15px 15px 15px;
+    text-align: center;
+}
+
+.formulario-verificar-correo .correo-verificar input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-verificar-correo .contenedor-boton-verificar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 15px 0 30px;
+}
+
+.formulario-verificar-correo .contenedor-boton-verificar .boton-verificar-correo{
+    width: 50%;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0f0019;
+    transition: .2s;
+}
+
+.boton-verificar-correo:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+/* cambiar password */
+
+.inicio-cambiar-password{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 75vh;
+}
+
+.article-cambiar-password{
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    padding: 30px;
+}
+
+.article-cambiar-password p{
+    font-size: 25px;
+    text-align: center;
+}
+
+.article-cambiar-password i{
+    font-size: 30px;
+    padding: 0 12px;
+}
+
+.section-cambiar-password{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(76,0,125,0.45);
+    position: relative;
+    width: 80vh;
+    height: 35vh;
+    border-radius: 35px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #5F0093, 0 0 20px #5F0093 , 0 0 40px #5F0093;
+}
+
+.section-cambiar-password  form{
+    width: 85%;
+    height: 75%;
+}
+
+.formulario-cambiar-password .change-password{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-cambiar-password .change-password input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-cambiar-password .new-password{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.formulario-cambiar-password .new-password input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+}
+
+.formulario-cambiar-password .container-boton-new-password{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 15px 0 30px;
+}
+
+.formulario-cambiar-password .container-boton-new-password .boton-new-password{
+    width: 50%;
+    height: 40px;
+    font-size: 17px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0f0019;
+    transition: .2s;
+}
+
+.boton-new-password:hover{
+    box-shadow: 0 0 10px #7A0A7B, 0 0 20px #7A0A7B , 0 0 40px #7A0A7B;
+    transition-delay: 1s;
+}
+
+/* gestion de archivos */
+
+.hola-user{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 25vh;
+    margin-left: 4%;
+    padding: 20px 20px;
+    font-size: 30px;
+}
+
+.hola-user i{
+    padding: 0 20px;
+}
+
+.container-gestor{
+    display: flex;
+    width: 100%;
+    height: 140vh;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gestor-section-uno{
+    display: flex;
+    width: 100%;
+    height: 15vh;
+}
+
+.buscar-archivos-gestor,  .crear-carpetas-gestor{
+    flex-basis: 50%;
+    padding: 10px;
+}
+
+.buscar-archivos-gestor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.buscar-archivos-gestor p{
+    color: #fff;
+    font-size: 20px;
+    margin-left: 20%;
+}
+
+.buscar-archivos-gestor i{
+    padding: 0 10px;
+}
+
+.buscar-archivos-gestor input{
+    width: 55%;
+    height: 50px;
+    border-radius: 25px;
+    text-align: center;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(225,225,225,0.7);
+}
+
+.crear-carpetas-gestor{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+}
+
+.container-gestor .gestor-section-uno .crear-carpetas-gestor input{
+    width: 40%;
+    height: 55px;
+    font-size: 17px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #E20053;
+    margin-right: 10%;
+    transition: .2s;
+}
+
+
+.gestor-section-uno .boton-crear-carpeta-gestor:hover{
+    box-shadow: 0 0 10px #E20053, 0 0 20px #E20053 , 0 0 40px #E20053;
+    transition-delay: 1s;
+}
+
+.gestor-section-dos{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 110vh;
+    padding: 20px;
+}
+
+.gestor-section-dos iframe{
+    padding: 0 30px;
+    width: 95%;
+    height: 100%;
+    background: #1f1f1f;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.gestor-section-tres{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 30px;
+    width: 100%;
+    height: 20vh;
+}
+
+.container-gestor .gestor-section-tres input{
+    width: 40%;
+    height: 55px;
+    font-size: 17px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #E20053;
+    margin-right: 10%;
+    transition: .2s;
+}
+
+.boton-crear-archivo-gestor:hover{
+    box-shadow: 0 0 10px #E20053, 0 0 20px #E20053 , 0 0 40px #E20053;
+    transition-delay: 1s;
+}
+
+/* footer */
+
+.footer{
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer .titulo-section{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    padding: 0px 15px;    
+}
+
+.footer .redes-sociales{
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.boton-redes-sociales{
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    padding: 15px;
+}
