@@ -7,9 +7,11 @@ from .views import (
     ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView,
     ContainerListView, ContainerDetailView, ContainerCreateView, ContainerUpdateView, ContainerDeleteView
 )
+from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('login/', LoginView.as_view(template_name='system/login.html'), name='login_view'),
     path('students/', StudentListView.as_view(), name='student_list'),
     path('students/<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
     path('students/create/', StudentCreateView.as_view(), name='student_create'),

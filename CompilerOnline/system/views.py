@@ -11,6 +11,9 @@ from .forms import RoleForm, UsersForm
 def index(request):
     return render(request, 'index.html')
 
+def login_view(request):
+    return render(request, 'system/login.html')
+
 class StudentListView(ListView):
     model = Students
 
