@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    
+    <header class="header">
+        <div class="logo">Logo</div>
+        <nav class="nav">
+            <a href="../index.html"><i class="fa-solid fa-xmark"></i>Regresar</a>
+        </nav>
+    </header>
+
+    <div class="inicio-recuperar-password">
+        <article class="articulo-inicio-recuperar">
+            <i class="fa-solid fa-chevron-left"></i>
+            <p>Recuperar contraseña</p>
+            <i class="fa-solid fa-chevron-right"></i>
+        </article>
+        <article class="section-recuperar-password">
+            <form action="" class="formulario-recuperar-password">
+                <div class="correo-recuperar-password"><p>Correo</p><input type="text" class="box"></div>
+                <div class="contenedor-boton-recuperar">
+                    <input class="boton-verificar-correo" type="submit" name="verificar" value="Verificar">
+                </div>
+            </form>
+        </article>
+    </div>
+{% endblock %}

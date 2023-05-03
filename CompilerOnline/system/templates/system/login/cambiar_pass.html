@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    
+    <header class="header">
+        <div class="logo">Logo</div>
+        <nav class="nav">
+            <a href="../index.html"><i class="fa-solid fa-xmark"></i>Regresar</a>
+        </nav>
+    </header>
+
+    <div class="inicio-cambiar-password">
+        <article class="article-cambiar-password">
+            <i class="fa-solid fa-chevron-left"></i>
+            <p>Cambiar Contraseña</p>
+            <i class="fa-solid fa-chevron-right"></i>
+        </article>
+        <article class="section-cambiar-password">
+            <form action="" class="formulario-cambiar-password">
+                <div class="change-password"><p>Nueva<br>Contraseña</p><input type="text" class="box"></div>
+                <div class="new-password"><p>Verificar<br>Contraseña</p><input type="text" class="box"></div>
+                <div class="container-boton-new-password">
+                    <input class="boton-new-password" type="submit" name="verificar" value="Aceptar">
+                </div>
+            </form>
+        </article>
+    </div>
+    {% endblock %}

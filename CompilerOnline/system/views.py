@@ -12,7 +12,16 @@ def index(request):
     return render(request, 'index.html')
 
 def login_view(request):
-    return render(request, 'system/login.html')
+    return render(request, 'system/login/login.html')
+
+def recuperar_pass(request):
+    return render(request, 'system/login/recuperar_pass.html')
+
+def verificar_pp(request):
+    return render(request, 'system/login/verificar_pp.html')
+
+def cambiar_pass(request):
+    return render(request, 'system/login/cambiar_pass.html')
 
 class StudentListView(ListView):
     model = Students
