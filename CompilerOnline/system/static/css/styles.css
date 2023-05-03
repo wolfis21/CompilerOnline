@@ -483,7 +483,7 @@ body{
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 80vh;
+    height: 130vh;
 }
 
 .article-registro-inicio{
@@ -513,7 +513,7 @@ body{
     background-color: rgb(76,0,125,0.45);
     position: relative;
     width: 80vh;
-    height: 55vh;
+    height: 110vh;
     border-radius: 35px;
     overflow: hidden;
     bottom: 30px;
