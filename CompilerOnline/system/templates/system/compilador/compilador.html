@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    
+    <header class="header">
+        <div class="logo">Logo</div>
+        <nav class="nav">
+            <a href="../gestion_archivos/"><i class="fa-solid fa-house-user"></i>Home</a>
+            <i class="fa-regular fa-user"></i>
+        </nav>
+    </header>
+
+    <div class="name">
+        <article class="article-inicio-python">
+            <i class="fa-solid fa-chevron-left"></i>
+            <p>Python</p>
+            <i class="fa-solid fa-chevron-right"></i>
+        </article>
+        <div class="linebar"></div>  
+    </div>
+    
+    <div class="container-code">
+        <div class="left-code">
+            <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo</p>
+            <textarea id="python-code"></textarea>
+        </div>
+        <div class="right-code-compile">
+            <p><i class="fa-solid fa-square-poll-horizontal"></i>Mira tu resultado</p>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <div class="error-console">
+        <div class="console">
+            <p><i class="fa-solid fa-circle-exclamation"></i>Console</p>
+            <iframe id="console-log-error"></iframe>
+        </div>
+        <div class="botones-console">
+            <div class="boton-guardar-archivo">
+                <input type="submit" name="guardar" value="Guardar">
+            </div>
+            <div class="boton-guardar-exportar">
+                <input type="submit" name="guardar-y-exportar" value="Guardar y Exportar">
+            </div>
+            
+        </div>
+    </div>
+    {% endblock %}

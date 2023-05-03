@@ -17,6 +17,11 @@ urlpatterns = [
     path('verificar_pp/', views.verificar_pp, name='verificar_pp'),
     path('cambiar_pass/', views.cambiar_pass, name='cambiar_pass'),
         #fin login
+    #perfil
+    path('gestion_archivos/', views.gestion_archivos, name='gestion_archivos'),
+    #compilador
+    path('compilador/', views.compilador, name='compilador'),
+    #compilador no login
     path('students/', StudentListView.as_view(), name='student_list'),
     path('students/<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
     path('students/create/', StudentCreateView.as_view(), name='student_create'),
