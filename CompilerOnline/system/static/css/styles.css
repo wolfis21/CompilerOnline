@@ -489,6 +489,7 @@ body{
 .article-registro-inicio{
     display: flex;
     justify-content: center;
+    align-content: center;
     align-items: center;
     color: #fff;
     width: 100%;

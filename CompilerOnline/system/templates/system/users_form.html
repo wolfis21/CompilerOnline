@@ -1,4 +1,4 @@
-{% extends '../base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 <div class="header">
@@ -34,7 +34,7 @@
         </tr>
       </table> -->
 
-      <div class="nombre-registro"><p>Nombre de Usuario</p><input type="text" class="box" id="name_u" name="name_u" value="{{ form.name_u.value }}"></div>
+      <div class="nombre-registro"><p>Nombre de<br>usuario</p><input type="text" class="box" id="name_u" name="name_u" value="{{ form.name_u.value }}"></div>
       <div class="correo-registro"><p>Correo</p><input type="text" class="box" id="email" name="email" value="{{ form.email.value }}"></div>
       <div class="password-registro"><p>Contraseña</p><input type="password" class="box"  id="password" name="password" value="{{ form.password.value }}"></div>
       <div class="repetir-password-registro"><p>V. Contraseña</p><input type="password" class="box"></div>
@@ -43,8 +43,7 @@
           <input class="boton-limpiar-registro" type="reset" name="limpiar" value="Limpiar">
           <input class="boton-registrar-user" type="submit" name="registrar" value="Registrar">
       </div>
-      <a href="../inicioSesion/index.html" class="recuperarContra">Ya tengo una cuenta bobis jeje</a>
-      <!-- <button type="submit">Create</button> -->
+      <a href="../inicioSesion/index.html" class="recuperarContra">Ya tengo una cuenta</a>  
     </form>
   </article>
   </div>
