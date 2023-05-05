@@ -6,8 +6,39 @@
 <header class="header">
     <div class="logo">Logo</div>
     <nav class="nav">
-        <a href="../compilador/"fa-solid fa-plus"></i>New Code</a>
-        <i class="fa-regular fa-user"></i>
+        <a href="../compilador/"><i class="fa-solid fa-plus"></i>New Code</a>
+        <i class="fa-regular fa-user user-pic" onclick="toggleMenu()"></i>
+
+        <div class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+                <div class="user-info">
+                    <i class="fa-regular fa-user"></i>
+                    <p>Jose Zorrilla</p>
+                </div>
+                <hr>
+                <a href="#" class="sub-menu-link">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Setting & Privacy</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <p>Help & Support</p>
+                    <span>></span>
+                </a>
+                <a href="../login/" class="sub-menu-link">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <p>Logout</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+        
     </nav>
 </header>
 
@@ -59,5 +90,12 @@
         </a>
     </div>
 </footer>
+
+<script>
+    let subMenu = document.getElementById("subMenu");
+    function toggleMenu(){
+        subMenu.classList.toggle("open-menu")
+    }
+</script>
 
 {% endblock %}
