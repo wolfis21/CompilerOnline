@@ -14,6 +14,13 @@ def index(request):
 def login_view(request):
     return render(request, 'system/login/login.html')
 
+def loginVf(request):
+    users = Users.objects.all()
+    contexto = {
+        'user':users
+    }
+    return render(request,'system/login/login.html',contexto)
+
 def recuperar_pass(request):
     return render(request, 'system/login/recuperar_pass.html')
 
@@ -22,6 +29,8 @@ def verificar_pp(request):
 
 def cambiar_pass(request):
     return render(request, 'system/login/cambiar_pass.html')
+
+
 
 def compilador(request):
     return render(request, 'system/compilador/compilador.html')
@@ -78,6 +87,7 @@ class UsersUpdateView(UpdateView):
 class UsersDeleteView(DeleteView):
     model = Users
     success_url = reverse_lazy('index')
+    
 class RoleListView(ListView):
     model = Roles
 

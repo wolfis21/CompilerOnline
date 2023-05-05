@@ -19,6 +19,9 @@ class Users(models.Model):
     email = models.EmailField()
     password =models.CharField(max_length=200, verbose_name='Contraseña')
     roles_id = models.ForeignKey(Roles, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name_u
 
 class Projects(models.Model):
     descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
