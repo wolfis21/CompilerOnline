@@ -40,36 +40,89 @@
     <nav class="nav">
         <a href=""><i class="fa-solid fa-plus"></i>New Code</a>
         <a href="../inicioSesion/index.html"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
-        <a href="../index.html"><i class="fa-solid fa-xmark"></i>Regresar</a>
+        <a href="/"><i class="fa-solid fa-xmark"></i>Regresar</a>
     </nav>
 </header>
 
-<div class="container-registro">
+<div class="container-registro-c">
     <article class="article-registro-inicio">
         <i class="fa-solid fa-chevron-left"></i>
         <p>Complemento de Registro</p>
         <i class="fa-solid fa-chevron-right"></i>
     </article>
-    <article class="section-formulario-registro">
+    <article class="section-formulario-registro-c">
         <form action="" method="post" class="formulario-registro">
-            <div class="nombre-registro"><p>Nombre de Estudiante</p><input type="text" class="box" id="name" name="name" value="{{ form.name.value }}"></div>
+            <div class="nombre-registro"><p>Nombre de<br>Estudiante</p><input type="text" class="box" id="name" name="name" value="{{ form.name.value }}"></div>
             <div class="apellido-registro"><p>Apellido</p><input type="text" class="box" id="last_name" name="last_name" value="{{ form.last_name.value }}"></div>
             <div class="pregunta-registro"><p>Seleccionar pregunta de seguridad</p></div>
-            <div class="seleccionar-pregunta-registro">
-<!--                 <select name="preguntas">
-                    <option selected disabled>Selecciona una pregunta</option>
-                    <option value="1">¿Mascota favorita?</option>
-                    <option value="2">¿Dulce favorito?</option>
-                    <option value="3">¿Color favorito?</option>
-                </select> -->
-                <input type="text" id="question_u" name="question_u" value="{{ form.question_u.value }}">
+
+
+            <div class="select-box">
+              <div class="select"  id="select">
+                <div class="contenido-select">
+                  <p class="titulo-select">Selecciona tu pregunta</p>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+              </div>
+
+              <!--opciones-->
+              <div class="select-opciones" id="selectOpciones">
+                <a href="#" class="opciones">
+                  <div class="contenido-opcion">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <div class="text-select">
+                      <p class="titulo-select">Cual es tu perro favorito?</p>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="opciones">
+                  <div class="contenido-opcion">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <div class="text-select">
+                      <p class="titulo-select">Cual es tu perro favorito?</p>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="opciones">
+                  <div class="contenido-opcion">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <div class="text-select">
+                      <p class="titulo-select">Cual es tu perro favorito?</p>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="opciones">
+                  <div class="contenido-opcion">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <div class="text-select">
+                      <p class="titulo-select">Cual es tu perro favorito?</p>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="opciones">
+                  <div class="contenido-opcion">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <div class="text-select">
+                      <p class="titulo-select">Cual es tu perro favorito?</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+
+
+
             </div>
+
+            <input type="hidden" name="pregunta" id="inputSelect" value="">
+
+
             <div class="respuesta-registro"><p>Respuesta</p></div>
             <div class="escribir-respuesta-registro"><input type="text" class="box" id="response_u" name="response_u" value="{{ form.response_u.value }}"></div>
                       
             <!-- esta parte de seleccion de users_id, se agarrara de el inicio de seccion -->
-                      <div><p>type de rol:</p> </div> 
-                      <div>
+                      <div class="type-rol"><p>type de rol:</p> </div> 
+                      <div class="type-rol-value">
                         <input type="text" id="users_id" name="users_id" value="2">
                       </div>
             <div class="contenedor-botones-formulario">
@@ -80,4 +133,44 @@
         </form>
     </article>
 </div>
+
+<footer class="footer">
+  <div class="contenedor-footer">
+      <p class="titulo-section">¡Siguenos!</p>
+  </div>
+  <div class="redes-sociales">
+      <a href="" class="boton-redes-sociales">
+          <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="" class="boton-redes-sociales">
+          <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="" class="boton-redes-sociales">
+          <i class="fa-brands fa-twitter"></i>
+      </a>
+  </div>
+</footer>
+
+<script>
+  const select = document.querySelector('#select');
+  const selectOpciones = document.querySelector('#selectOpciones');
+  const contenidoSelect = document.querySelector('#select .contenido-select');
+  const hiddenInput = document.querySelector('#inputSelect');
+
+  document.querySelectorAll('#selectOpciones > .opciones').forEach((opcion) => {
+    opcion.addEventListener('click',(e)=>{
+      e.preventDefault();
+      contenidoSelect.innerHTML = e.currentTarget.innerHTML;
+      select.classList.toggle('active');
+      selectOpciones.classList.toggle('active');
+      hiddenInput.value = e.currentTarget.querySelector('.titulo-select').innerText;
+    });
+  });
+
+  select.addEventListener('click',()=>{
+    select.classList.toggle('active');
+    selectOpciones.classList.toggle('active');
+  });
+</script>
+
 {% endblock %}
