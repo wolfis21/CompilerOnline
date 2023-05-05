@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}Iniciar Sesion{% endblock %}
 {% load static %}
 
 {% block content %}
@@ -20,9 +20,10 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
     <article class="container-formulario-inicio">
-        <form action="" class="formulario-inicio-sesion">
-            <div class="correo-inicio-sesion"><p>Correo</p><input type="text" class="box"></div>
-            <div class="password-inicio-sesion"><p>Contraseña</p><input type="password" class="box"></div>
+        <form action="{% url 'custom_login' %}" method="POST" class="formulario-inicio-sesion">
+            {% csrf_token %}
+            <div class="correo-inicio-sesion"><p>Correo</p><input type="text" class="box" id="email" name="email"></div>
+            <div class="password-inicio-sesion"><p>Contraseña</p><input type="password" class="box" id="password" name="password"></div>
             <div class="container-boton-iniciar-sesion"><input class="boton-iniciar-sesion" type="submit" name="inicio" value="Iniciar Sesion"></div>
             <a href="../recuperar_pass/" class="recuperar-password">Se me olvido la contraseña</a>
         </form>

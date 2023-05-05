@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Registro{% endblock %}
 {% load static %}
 {% block content %}
 <div class="header">
@@ -18,21 +19,6 @@
   <article class="section-formulario-registro">
     <form method="post" action="{% url 'user_create' %}" class="formulario-registro">
       {% csrf_token %}
-<!--       <table>
-        <tr>
-          <th><label for="name_u">Nombre de Usuario:</label></th>
-          <td><input type="text" id="name_u" name="name_u" value="{{ form.name_u.value }}"></td>
-          <th><label for="password">Password:</label></th>
-          <td><input type="password" id="password" name="password" value="{{ form.password.value }}"></td>
-          <th><label for="email">Email de Usuario:</label></th>
-          <td><input type="email" id="email" name="email" value="{{ form.email.value }}"></td>
-           -->    
-              <!-- esta parte de seleccion de rol, como se creara
-              solamente estudiantes este input estara oculto y siempre se ira por estudiante el user -->
-<!--           <th><label for="roles_id">type de rol:</label></th>
-          <td><input type="text" id="roles_id" name="roles_id" value="2"></td>
-        </tr>
-      </table> -->
 
       <div class="nombre-registro"><p>Nombre de<br>Usuario</p><input type="text" class="box" id="name_u" name="name_u" value="{{ form.name_u.value }}"></div>
       <div class="correo-registro"><p>Correo</p><input type="text" class="box" id="email" name="email" value="{{ form.email.value }}"></div>
