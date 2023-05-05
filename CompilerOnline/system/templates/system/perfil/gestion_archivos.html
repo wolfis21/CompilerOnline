@@ -3,44 +3,61 @@
 {% load static %}
 
 {% block content %}
-    <header class="header">
-        <div class="logo">Logo</div>
-        <nav class="nav">
-            <a href="../compilador/"fa-solid fa-plus"></i>New Code</a>
-            <i class="fa-regular fa-user"></i>
-        </nav>
-    </header>
-    
-    <div class="hola-user">
-        <p>Hola, @user <i class="fa-solid fa-hands-bubbles"></i></p>
-    </div>
+<header class="header">
+    <div class="logo">Logo</div>
+    <nav class="nav">
+        <a href="../compilador/"fa-solid fa-plus"></i>New Code</a>
+        <i class="fa-regular fa-user"></i>
+    </nav>
+</header>
 
-    <div class="container-gestor">
-        <div class="gestor-section-uno">
-            <div class="buscar-archivos-gestor">
-                <p>Buscar <i class="fa-solid fa-magnifying-glass"></i></p>
-                <input type="text" class="box"> 
-            </div>
-            <div class="crear-carpetas-gestor">
-                <input 
-                class="boton-crear-carpeta-gestor" 
-                type="submit" 
-                name="crear-carpeta" 
-                value="Crear Carpeta"
-                >
-            </div>
+<div class="hola-user">
+    <p>Hola, @user <i class="fa-solid fa-hands-bubbles"></i></p>
+</div>
+
+<div class="container-gestor">
+    <div class="gestor-section-uno">
+        <div class="buscar-archivos-gestor">
+            <p>Buscar <i class="fa-solid fa-magnifying-glass"></i></p>
+            <input type="text" class="box"> 
         </div>
-        <div class="gestor-section-dos">
-            <iframe id="table-archivos"></iframe>
-        </div>
-        <div class="gestor-section-tres">
+        <div class="crear-carpetas-gestor">
             <input 
-            class="boton-crear-archivo-gestor" 
+            class="boton-crear-carpeta-gestor" 
             type="submit" 
-            name="crear-archivo" 
-            value="Crear archivo"
+            name="crear-carpeta" 
+            value="Crear Carpeta"
             >
         </div>
     </div>
+    <div class="gestor-section-dos">
+        <iframe id="table-archivos"></iframe>
+    </div>
+    <div class="gestor-section-tres">
+        <input 
+        class="boton-crear-archivo-gestor" 
+        type="submit" 
+        name="crear-archivo" 
+        value="Crear archivo"
+        >
+    </div>
+</div>
 
-    {% endblock %}
+<footer class="footer">
+    <div class="contenedor-footer">
+        <p class="titulo-section">¡Siguenos!</p>
+    </div>
+    <div class="redes-sociales">
+        <a href="" class="boton-redes-sociales">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="" class="boton-redes-sociales">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="" class="boton-redes-sociales">
+            <i class="fa-brands fa-twitter"></i>
+        </a>
+    </div>
+</footer>
+
+{% endblock %}

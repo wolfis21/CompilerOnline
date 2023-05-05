@@ -11,8 +11,8 @@ body{
     background-color: #0E0B16;
 }
 
-p {
-    margin: 0;
+p{
+    margin-bottom: 0;
 }
 
 /* header */
@@ -221,6 +221,32 @@ p {
     width: 100%;
     height: 50vh;
 }
+
+/* consola para no user */
+.console-no-user{
+    width: 100%;
+}
+
+.error-console .console-no-user p{
+    color: #fff;
+    padding: 0 10px 10px;
+}
+
+.error-console .console-no-user p i{
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+.error-console .console-no-user iframe{
+    width: 100%;
+    height: 99%;
+    background: #1f1f1f;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* consola para user */
 
 .console, .botones-console{
     flex-basis: 50%;
@@ -485,9 +511,8 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 130vh;
+    height: 100vh;
 }
 
 .article-registro-inicio{
@@ -497,8 +522,8 @@ p {
     align-items: center;
     color: #fff;
     width: 100%;
-    height: 20%;
-    padding: 30px;
+    height: 30vh;
+    padding: 0px 0px 30px;
 }
 
 .article-registro-inicio p{
@@ -518,7 +543,7 @@ p {
     background-color: rgb(76,0,125,0.45);
     position: relative;
     width: 80vh;
-    height: 110vh;
+    height: 65vh;
     border-radius: 35px;
     overflow: hidden;
     bottom: 30px;
@@ -537,6 +562,7 @@ p {
     justify-content: space-between;
     font-size: 18px;
     padding: 10px 15px;
+    line-height: 20px;
 }
 
 .formulario-registro .nombre-registro input{
@@ -602,7 +628,7 @@ p {
     align-items: center;
     justify-content: space-between;
     font-size: 18px;
-    padding: 10px 15px 20px;
+    padding: 10px 15px;
 }
 
 .formulario-registro .password-registro input{
@@ -626,6 +652,7 @@ p {
     justify-content: space-between;
     font-size: 18px;
     padding: 10px 15px 20px;
+    line-height: 20px;
 }
 
 .formulario-registro .repetir-password-registro input{
@@ -1149,6 +1176,7 @@ p {
     justify-content: space-between;
     font-size: 18px;
     padding: 10px 15px;
+    line-height: 20px;
 }
 
 .formulario-cambiar-password .change-password input{
@@ -1171,6 +1199,7 @@ p {
     justify-content: space-between;
     font-size: 18px;
     padding: 10px 15px;
+    line-height: 20px;
 }
 
 .formulario-cambiar-password .new-password input{

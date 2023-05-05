@@ -26,6 +26,9 @@ def cambiar_pass(request):
 def compilador(request):
     return render(request, 'system/compilador/compilador.html')
 
+def compilador_no_user(request):
+    return render(request, 'system/compilador_no_user/compilador_no_user.html')
+
 def gestion_archivos(request):
     return render(request, 'system/perfil/gestion_archivos.html')
 

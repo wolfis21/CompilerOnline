@@ -22,6 +22,8 @@ urlpatterns = [
     #compilador
     path('compilador/', views.compilador, name='compilador'),
     #compilador no login
+    path('compilador_no_user/' , views.compilador_no_user, name='compilador_no_user'),
+    
     path('students/', StudentListView.as_view(), name='student_list'),
     path('students/<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
     path('students/create/', StudentCreateView.as_view(), name='student_create'),
