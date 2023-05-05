@@ -196,13 +196,12 @@ p{
     outline: none;
 }
 
-.row-main .section-right-main i.main-icon-adelante{
+.row-main .section-right-main img{
     position: absolute;
-    color: rgb(226,0,83);
-    font-size: 300px;
-    top: 25%;
-    left: -15%;
-    
+    width: 400px;
+    height: 400px;
+    top: 30px;
+    right: 200px;
 }
 
 /* compilador */
