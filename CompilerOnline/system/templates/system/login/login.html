@@ -20,7 +20,7 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
     <article class="container-formulario-inicio">
-        <form action="{% url 'custom_login' %}" method="POST" class="formulario-inicio-sesion">
+        <form action="" method="POST" class="formulario-inicio-sesion">
             {% csrf_token %}
             <div class="correo-inicio-sesion"><p>Correo</p><input type="text" class="box" id="email" name="email"></div>
             <div class="password-inicio-sesion"><p>Contraseña</p><input type="password" class="box" id="password" name="password"></div>
