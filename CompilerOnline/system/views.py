@@ -28,7 +28,8 @@ def login_view(request):
             return redirect('gestion_archivos')
         else:
             messages.info(request,'invalid username or password')
-            return redirect('login_view')'''
+            return redirect('login_view')
+            '''
 
 def recuperar_pass(request):
     return render(request, 'system/login/recuperar_pass.html')
