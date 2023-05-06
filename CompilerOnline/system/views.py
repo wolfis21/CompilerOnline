@@ -5,8 +5,6 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from .models import Roles
 from .forms import RoleForm, UsersForm
-from django.contrib import messages
-from django.contrib.auth.models import User, auth
 
 # Create your views here.
 
@@ -15,21 +13,6 @@ def index(request):
 
 def login_view(request):
     return render(request, 'system/login/login.html')
-'''
-def login_view(request):
-    if request.method == 'POST':
-        email = request.POST('email')
-        password = request.POST('password')
-        
-        Users = auth.authenticate(email=email,password=password)
-        
-        if Users is not None:
-            auth.login(request,Users)
-            return redirect('gestion_archivos')
-        else:
-            messages.info(request,'invalid username or password')
-            return redirect('login_view')
-            '''
 
 def recuperar_pass(request):
     return render(request, 'system/login/recuperar_pass.html')
