@@ -23,6 +23,8 @@ def verificar_pp(request):
 def cambiar_pass(request):
     return render(request, 'system/login/cambiar_pass.html')
 
+
+
 def compilador(request):
     return render(request, 'system/compilador/compilador.html')
 
@@ -78,6 +80,7 @@ class UsersUpdateView(UpdateView):
 class UsersDeleteView(DeleteView):
     model = Users
     success_url = reverse_lazy('index')
+    
 class RoleListView(ListView):
     model = Roles
 
