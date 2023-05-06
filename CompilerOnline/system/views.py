@@ -23,8 +23,6 @@ def verificar_pp(request):
 def cambiar_pass(request):
     return render(request, 'system/login/cambiar_pass.html')
 
-
-
 def compilador(request):
     return render(request, 'system/compilador/compilador.html')
 
