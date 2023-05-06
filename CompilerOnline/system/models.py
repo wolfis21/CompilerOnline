@@ -31,7 +31,6 @@ class Users(models.Model):
         verbose_name='Usuario'
         verbose_name_plural='Usuarios'
 
-
 class Projects(models.Model):
     descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
     data_ref = models.CharField(max_length=200, verbose_name='ruta de archivo')
