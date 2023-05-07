@@ -1,6 +1,5 @@
 from django import forms
-from .models import Roles
-from .models import Users
+from .models import *
 
 class RoleForm(forms.ModelForm):
     class Meta:

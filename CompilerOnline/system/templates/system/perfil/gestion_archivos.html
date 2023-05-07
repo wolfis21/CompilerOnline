@@ -16,7 +16,7 @@
                     <p>Jose Zorrilla</p>
                 </div>
                 <hr>
-                <a href="#" class="sub-menu-link">
+                <a href="{% url 'students_form' %}" class="sub-menu-link">
                     <i class="fa-solid fa-pen-to-square"></i>
                     <p>Edit Profile</p>
                     <span>></span>
@@ -43,7 +43,7 @@
 </header>
 
 <div class="hola-user">
-    <p>Hola, @user <i class="fa-solid fa-hands-bubbles"></i></p>
+    <p>Hola,{{nombre_u}} <i class="fa-solid fa-hands-bubbles"></i></p>
 </div>
 
 <div class="container-gestor">
