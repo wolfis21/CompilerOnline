@@ -18,7 +18,7 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
     <article class="section-verificar-correo">
-        <form method="POST" action="{% url 'verificar_pp' %}" class="formulario-verificar-correo">
+        <form method="POST" action="{% if email %}{% url 'verificar_pp' email=email %}{% endif %}" class="formulario-verificar-correo">
             {% csrf_token %}
             <div class="pregunta-verificacion"><input type="text" class="box" name="question_u" value="{{ question_u }}"></div>
             <div class="correo-verificar"><p>Respuesta</p><input type="text" class="box" name='response_u' value=""></div>

@@ -10,8 +10,8 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='system/login/login.html'), name='login_view'),
     path('login_view', views.login_view ,name='login_view'),
     path('recuperar_pass/', views.recuperar_pass, name='recuperar_pass'),
-    path('verificar_pp/', views.verificar_pp, name='verificar_pp'),
-    path('cambiar_pass/', views.cambiar_pass, name='cambiar_pass'),
+    path('verificar_pp/<str:email>', views.verificar_pp, name='verificar_pp'),
+    path('cambiar_pass/<str:email>', views.cambiar_pass, name='cambiar_pass'),
         #fin login
         
     path('users_form/', views.users_form,name='users_form'),

@@ -97,7 +97,7 @@ def recuperar_pass(request):
             return redirect('recuperar_pass')
         else:
             subject = 'Recuperación de contraseña'
-            link = settings.BASE_URL + reverse('verificar_pp')
+            link = settings.BASE_URL + reverse('verificar_pp',kwargs={'email':email})
             message = f'Hola {link}'
             from_email = 'zorrillaja30@gmail.com'
             recipient_list = [email]
@@ -107,31 +107,29 @@ def recuperar_pass(request):
             return redirect('recuperar_pass')
     return render(request, 'system/login/recuperar_pass.html')
 
-def verificar_pp(request):
-    user_email = request.GET.get('email')
-    print(user_email)
-    user = Users.objects.get(email=user_email)
-    user_edit = Students.objects.get(users_id=user.id)        
-    question_u = user_edit.GET.get(question_u)
-    context = {
-        'question_u':question_u
-    }
-    return render(request, 'system/login/verificar_pp.html',context)
+def verificar_pp(request,email):
+    return render(request, 'system/login/verificar_pp.html')
 
-def verificar_pp(request):
+def verificar_pp(request,email):
+    user_email  = Users.objects.get(email=email)
+    user_editable = Students.objects.get(users_id=user_email.id)
+    
     if request.method == "POST":
+        
         question_u = request.POST['question_u']
         response_u = request.POST['response_u']
+        
         user_edit = Students.objects.get(question_u=question_u)
         response_edit = Students.objects.get(response_u=response_u)
         if response_u:
-            if response_edit == response_u:
-                return render(request,'cambiar_pass')
+            if user_editable.response_u == response_u:
+                url = settings.BASE_URL + reverse('cambiar_pass',kwargs={'email':email})
+                return redirect(url)
             else:
                 print('no')
     return render(request,'system/login/verificar_pp.html')
 
-def cambiar_pass(request):
+def cambiar_pass(request,email):
     return render(request, 'system/login/cambiar_pass.html')
 
 def compilador(request):
