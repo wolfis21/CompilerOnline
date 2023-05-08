@@ -1,6 +1,4 @@
 from django.contrib import admin
-
-# Register your models here.
 from .models import Roles
 from .models import Students, StudentsProjects
 from .models import Users

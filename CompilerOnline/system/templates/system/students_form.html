@@ -35,12 +35,10 @@
     </table>
     <button type="submit">Create</button>
   </form> -->
-  <header class="header">
+<header class="header">
     <div class="logo">Logo</div>
     <nav class="nav">
-        <a href=""><i class="fa-solid fa-plus"></i>New Code</a>
-        <a href="../inicioSesion/index.html"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
-        <a href="/"><i class="fa-solid fa-xmark"></i>Regresar</a>
+        <a href="{%url 'gestion_archivos'%}"><i class="fa-solid fa-xmark"></i>Regresar</a>
     </nav>
 </header>
 
@@ -55,7 +53,6 @@
             <div class="nombre-registro"><p>Nombre de<br>Estudiante</p><input type="text" class="box" id="name" name="name" value="{{ form.name.value }}"></div>
             <div class="apellido-registro"><p>Apellido</p><input type="text" class="box" id="last_name" name="last_name" value="{{ form.last_name.value }}"></div>
             <div class="pregunta-registro"><p>Seleccionar pregunta de seguridad</p></div>
-
 
             <div class="select-box">
               <div class="select"  id="select">
@@ -108,14 +105,9 @@
                   </div>
                 </a>
               </div>
-
-
-
-
             </div>
 
             <input type="hidden" name="pregunta" id="inputSelect" value="">
-
 
             <div class="respuesta-registro"><p>Respuesta</p></div>
             <div class="escribir-respuesta-registro"><input type="text" class="box" id="response_u" name="response_u" value="{{ form.response_u.value }}"></div>
@@ -129,7 +121,6 @@
                 <input class="boton-limpiar-registro" type="reset" name="limpiar" value="Limpiar">
                 <input class="boton-registrar-user" type="submit" name="registrar" value="Registrar">
             </div>
-            <a href="../inicioSesion/index.html" class="recuperarContra">Ya tengo una cuenta bobis jeje</a>
         </form>
     </article>
 </div>

@@ -10,6 +10,16 @@
             <a href="/"><i class="fa-solid fa-xmark"></i>Regresar</a>
         </nav>
     </header>
+    
+<!-- Seccion para los mensajes de alerta
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+-->
 
     <div class="inicio-recuperar-password">
         <article class="articulo-inicio-recuperar">
@@ -18,8 +28,9 @@
             <i class="fa-solid fa-chevron-right"></i>
         </article>
         <article class="section-recuperar-password">
-            <form action="" class="formulario-recuperar-password">
-                <div class="correo-recuperar-password"><p>Correo</p><input type="text" class="box"></div>
+            <form method="POST" action="{% url 'recuperar_pass'%}" class="formulario-recuperar-password">
+                {% csrf_token %}
+                <div class="correo-recuperar-password"><p>Correo</p><input type="text" class="box" id="email" name="email"></div>
                 <div class="contenedor-boton-recuperar">
                     <input class="boton-verificar-correo" type="submit" name="verificar" value="Verificar">
                 </div>

@@ -1,22 +1,22 @@
 from django.urls import path
 from . import views
-from .views import (
-    StudentListView, StudentDetailView, StudentCreateView, StudentUpdateView, StudentDeleteView,
-    UsersListView, UsersDetailView, UsersCreateView, UsersUpdateView, UsersDeleteView,
-    RoleListView, RoleDetailView, RoleCreateView, RoleUpdateView, RoleDeleteView,
-    ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView,
-    ContainerListView, ContainerDetailView, ContainerCreateView, ContainerUpdateView, ContainerDeleteView
-)
+from .views import *
+from .views import login_view
 from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('', views.index, name='index'),
         #manejo de login
     path('login/', LoginView.as_view(template_name='system/login/login.html'), name='login_view'),
+    path('login_view', views.login_view ,name='login_view'),
     path('recuperar_pass/', views.recuperar_pass, name='recuperar_pass'),
-    path('verificar_pp/', views.verificar_pp, name='verificar_pp'),
-    path('cambiar_pass/', views.cambiar_pass, name='cambiar_pass'),
+    path('verificar_pp/<str:email>', views.verificar_pp, name='verificar_pp'),
+    path('cambiar_pass/<str:email>', views.cambiar_pass, name='cambiar_pass'),
         #fin login
+        
+    path('users_form/', views.users_form,name='users_form'),
+    path('students_form/', views.students_form,name='students_form'),
+    
     #perfil
     path('gestion_archivos/', views.gestion_archivos, name='gestion_archivos'),
     #compilador

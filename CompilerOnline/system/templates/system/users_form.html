@@ -17,7 +17,7 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
   <article class="section-formulario-registro">
-    <form method="post" action="{% url 'user_create' %}" class="formulario-registro">
+    <form method="post" action="{% url 'users_form' %}" class="formulario-registro">
       {% csrf_token %}
 
       <div class="nombre-registro"><p>Nombre de<br>Usuario</p><input type="text" class="box" id="name_u" name="name_u" value="{{ form.name_u.value }}"></div>

@@ -1,13 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 # Create your models here.
 #prototype 1
+
 class Roles(models.Model):
     name_rol = models.CharField(max_length=200, verbose_name='nombre del Rol')
     
     class Meta:
         verbose_name='Rol'
         verbose_name_plural='Roles'
+        
+    def __str__(self):
+        return self.name_rol
 
 class Students(models.Model):
     name =models.CharField(max_length=200, verbose_name='nombre de Estudiante')
@@ -22,15 +27,19 @@ class Students(models.Model):
         verbose_name_plural='Estudiantes'
 
 class Users(models.Model):
-    name_u =models.CharField(max_length=200, verbose_name='nombre de usuario')
-    email = models.EmailField()
+    name_u = models.CharField(max_length=200, verbose_name='Nombre de usuario')
+    email = models.EmailField(verbose_name='Correo electronico')
     password =models.CharField(max_length=200, verbose_name='Contraseña')
     roles_id = models.ForeignKey(Roles, on_delete=models.CASCADE)
-    
+
     class Meta:
+        db_table='system_users'
         verbose_name='Usuario'
         verbose_name_plural='Usuarios'
-
+        
+    def __str__(self):
+        return self.email
+        
 class Projects(models.Model):
     descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
     data_ref = models.CharField(max_length=200, verbose_name='ruta de archivo')
