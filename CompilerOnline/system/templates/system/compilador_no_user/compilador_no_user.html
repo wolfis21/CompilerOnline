@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
-
+{% block title %}Compiler{% endblock %}
+{% block head %}
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script> 
+{% endblock %}
 {% load static %}
 
 {% block content %}
     
 <header class="header">
-    <div class="logo">Logo</div>
+    <div class="logo">
+        <img src="{%static 'images/logo.png'%}" >
+    </div>
     <nav class="nav">
-        <a href="login/"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
-        <a href="users_form/"><i class="fa-regular fa-address-card"></i>Registrarse</a>
+        <a href="../login/"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
+        <a href="../users_form/"><i class="fa-regular fa-address-card"></i>Registrarse</a>
         <a href="/"><i class="fa-solid fa-xmark"></i>Regresar</a>
     </nav>
 </header>
@@ -25,18 +31,25 @@
 <div class="container-code">
     <div class="left-code">
         <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo</p>
-        <textarea id="python-code"></textarea>
+        <div class="text-compiler">
+            <py-repl class="py-custom"></py-repl>
+        </div>
+        <!-- <textarea id="python-code"></textarea> -->
     </div>
     <div class="right-code-compile">
         <p><i class="fa-solid fa-square-poll-horizontal"></i>Mira tu resultado</p>
-        <iframe id="output"></iframe>
+<!--         <iframe id="output">
+        </iframe> -->
+        <div id="output-terminal">
+            <py-terminal auto="" class=""></py-terminal>
+        </div>
     </div>
 </div>
 
 <div class="error-console">
     <div class="console-no-user">
         <p><i class="fa-solid fa-circle-exclamation"></i>Console</p>
-        <iframe id="console-log-error"></iframe>
+        <!-- <iframe id="console-log-error"></iframe> -->
     </div>
 </div>
 

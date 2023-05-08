@@ -3,7 +3,9 @@
 {% load static %}
 {% block content %}
 <div class="header">
-  <div class="logo">Logo</div>
+  <div class="logo">
+    <img src="{%static 'images/logo.png'%}" >
+</div>
   <nav class="nav">
       <a href=""><i class="fa-solid fa-plus"></i>New Code</a>
       <a href="{% url 'login_view' %}"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>

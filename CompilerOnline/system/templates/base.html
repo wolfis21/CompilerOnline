@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-  <script defer src="https://pyscript.net/latest/pyscript.js"></script>  -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    {% block head %}{% endblock %}
+  <!--   <link rel="stylesheet" type="text/css" href="{% static 'css/pyscript_base.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
   <link rel="shortcut icon" type="image/x-icon" href="{%static 'favicon.ico'%}">
 </head>
 <body>
@@ -17,5 +17,16 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="{% static 'js/code.js' %}"></script>
+<!--   <script type="text/javascript" src="{% static 'js/_pyscript.js' %}"></script>
+  <script type="text/javascript">
+      // Crear una instancia de PyScript
+      var ps = new PyScript();
+
+      // Obtener el elemento py-repl
+      var repl_element = document.getElementsByTagName('py-repl')[0];
+
+      // Configurar el REPL de PyScript
+      ps.REPL(repl_element);
+  </script> -->
 </body>
 </html>
