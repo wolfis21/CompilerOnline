@@ -1694,8 +1694,3 @@ p{
 }
 
 /* compilador */
-
-.py-repl-output {
-    position: relative;
-    top: 55rem;
-} /* esto no esta nada bien, hay que pensar como mejorar */
