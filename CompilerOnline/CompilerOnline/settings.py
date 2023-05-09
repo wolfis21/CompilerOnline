@@ -130,3 +130,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = '1111 erowwymutreobfhl'
+
+#ese password esta erroneo, lanza errores, si se coloca el correcto esta funciona
+#de igual formna se llena el user_host

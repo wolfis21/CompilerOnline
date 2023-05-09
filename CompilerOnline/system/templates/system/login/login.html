@@ -14,7 +14,13 @@
         <a href="/"><i class="fa-solid fa-xmark"></i>Regresar</a>
     </nav>
 </header>
-
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 <div class="login-inicio-sesion">
     <article class="article-inicio-sesion">
         <i class="fa-solid fa-chevron-left"></i>

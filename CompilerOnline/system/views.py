@@ -66,7 +66,8 @@ def login_view(request):
                 user = Users.objects.get(email=email)
             except Users.DoesNotExist:
             # Si el usuario no existe, mostrar un mensaje de error
-                return render(request, 'system/login/login.html', {'error_message': 'El correo o la contraseña son incorrectos'})
+                messages.error(request, 'No se encontró una cuenta asociada con este correo electrónico.')
+                return render(request, 'system/login/login.html')
             
             if not check_password(password, user.password):
                 return render(request, 'system/login/login.html', {'error_message': 'El correo o la contraseña son incorrectos'})
