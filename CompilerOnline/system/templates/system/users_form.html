@@ -19,13 +19,15 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
   <article class="section-formulario-registro">
-    <form method="post" action="{% url 'users_form' %}" class="formulario-registro">
+    <form method="post" action="{% url 'users_form' %}" class="formulario-registro" onsubmit="return validarFormulario()">
       {% csrf_token %}
 
-      <div class="nombre-registro"><p>Nombre de<br>Usuario</p><input type="text" class="box" id="name_u" name="name_u" value="{{ form.name_u.value }}"></div>
-      <div class="correo-registro"><p>Correo</p><input type="text" class="box" id="email" name="email" value="{{ form.email.value }}"></div>
-      <div class="password-registro"><p>Contraseña</p><input type="password" class="box"  id="password" name="password" value="{{ form.password.value }}"></div>
-      <div class="repetir-password-registro"><p>Verificar<br>Contraseña</p><input type="password" class="box"></div>
+      <div class="nombre-registro"><p>Nombre de<br>Usuario</p><input type="text" class="box" id="name_u" name="name_u" ></div>
+      <div class="correo-registro"><p>Correo</p><input type="text" class="box" id="email" name="email" ></div>
+      <div class="password-registro"><p>Contraseña</p><input type="password" class="box"  id="password" name="password">
+        <input class="check-tt" type="checkbox" onchange="togglePasswordVisibility()">
+      </div>
+      <div class="repetir-password-registro"><p>Verificar<br>Contraseña</p><input type="password" class="box" id="confirm_password" name="confirm_password"></div>
       <div class="" style="display: none;"><input type="text" id="roles_id" name="roles_id" value="2"></div>
       <div class="contenedor-botones-formulario">
           <input class="boton-limpiar-registro" type="reset" name="limpiar" value="Limpiar">

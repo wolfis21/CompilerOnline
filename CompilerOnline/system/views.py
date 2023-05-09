@@ -16,6 +16,7 @@ from django.utils.encoding import force_bytes
 from django.conf import settings
 from django.urls import reverse
 from django.contrib.auth.tokens import default_token_generator
+from .forms import StudentForm
 
 # Create your views here.
 def users_form(request):
@@ -35,7 +36,8 @@ def users_form(request):
             user.save()
             messages.success(request,f'Usuario {name_u} creado')
             
-            return redirect(reverse('gestion_archivos'))
+            #return redirect(reverse('system/login/login.html'))
+            return render(request, 'system/login/login.html')
         else:
             messages.error()
     else: 
@@ -152,9 +154,16 @@ class StudentDetailView(DetailView):
 
 class StudentCreateView(CreateView):
     model = Students
-    fields = ['name', 'last_name', 'question_u',
-              'response_u','users_id']
+    form_class = StudentForm
     success_url = reverse_lazy('index')
+    
+    def form_valid(self, form):
+        # Validar los datos del formulario
+        if form.is_valid():
+            # Guardar los datos del formulario en la base de datos
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)    
 
 
 class StudentUpdateView(UpdateView):

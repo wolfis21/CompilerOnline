@@ -1693,4 +1693,48 @@ p{
     padding: 15px;
 }
 
-/* compilador */
+/* compilador no user */
+
+@keyframes fadeInOut {
+0%, 100% {
+  opacity: 0;
+}
+50% {
+  opacity: 1;
+}
+}
+.alert-register{
+    font-size: 20px;
+    color: #ffff;
+    padding-bottom: 30px;
+    animation: fadeInOut 3s ease infinite;
+}
+
+@keyframes fadeInOutLogin {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+.messages.login{
+    margin-bottom: 2rem;
+    color: #ffff;
+    background-color: red;
+    list-style: none;
+    border-radius: 10px;
+    animation: fadeInOutLogin 6s ease infinite;
+}
+
+.messages.login .error{
+    padding: 10px;
+}
+
+.check-tt{
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 34rem;
+}

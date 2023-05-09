@@ -51,7 +51,8 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
     <article class="section-formulario-registro-c">
-        <form action="" method="post" class="formulario-registro">
+        <form action="{% url 'student_create' %}" method="post" class="formulario-registro">
+          {% csrf_token %}
             <div class="nombre-registro"><p>Nombre de<br>Estudiante</p><input type="text" class="box" id="name" name="name" value="{{ form.name.value }}"></div>
             <div class="apellido-registro"><p>Apellido</p><input type="text" class="box" id="last_name" name="last_name" value="{{ form.last_name.value }}"></div>
             <div class="pregunta-registro"><p>Seleccionar pregunta de seguridad</p></div>

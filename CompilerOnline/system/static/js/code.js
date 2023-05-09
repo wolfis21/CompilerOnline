@@ -26,5 +26,27 @@ $(document).ready(function(){
     });
 });
 
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById('password');
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
+}
 
+function validarFormulario() {
+  // Obtener los valores de los campos de contraseña
+  var password = document.getElementById("password").value;
+  var confirm_password = document.getElementById("confirm_password").value;
 
+  // Verificar si los valores son iguales
+  if (password !== confirm_password) {
+    // Mostrar un mensaje de error
+    alert("Las contraseñas no coinciden");
+    return false; // Evitar que se envíe el formulario
+  }
+
+  // Si llegamos aquí, las contraseñas coinciden
+  return true; // Permitir que se envíe el formulario
+}
