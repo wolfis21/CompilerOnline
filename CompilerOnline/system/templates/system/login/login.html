@@ -41,7 +41,7 @@
             {% csrf_token %}
             <div class="correo-inicio-sesion"><p>Correo</p><input type="text" class="box" id="email" name="email"></div>
             <div class="password-inicio-sesion"><p>Contraseña</p><input type="password" class="box" id="password" name="password">
-                <input class="check-tt" type="checkbox" onchange="togglePasswordVisibility()">
+                <i class="fa-solid fa-eye check-tt" onclick="togglePasswordVisibility()"></i>
             </div>
             <div class="container-boton-iniciar-sesion"><input class="boton-iniciar-sesion" type="submit" name="inicio" value="Iniciar Sesion"></div>
             <a href="../recuperar_pass/" class="recuperar-password">Se me olvido la contraseña</a>

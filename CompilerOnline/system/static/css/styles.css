@@ -1737,5 +1737,11 @@ p{
     padding: 0;
     margin: 0;
     position: absolute;
-    left: 34rem;
+    right: 1.5rem;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.check-tt:hover{
+    color: #5F0093;
 }
