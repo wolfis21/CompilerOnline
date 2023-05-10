@@ -45,7 +45,7 @@ def users_form(request):
     else: 
         return render(request, 'system/users_form.html')
 
-def students_form(request):
+def students_form(request,id):
     return render(request,'system/students_form.html')
 
 def students_form(request,id):
@@ -65,6 +65,11 @@ def students_form(request,id):
             student = Students(name=name,last_name=last_name,question_u=pregunta,response_u=response_u,users_id_id=id)
             student.save()
             messages.success(request,f'Datos de {name} actualizado')
+            context = {
+                'user_id':id
+            }
+            url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':id})
+            return redirect(url)
             
         else:
             
@@ -181,6 +186,7 @@ def gestion_archivos(request,id):
 def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
     context = {
+        'user_id':id,
         'name_u':user_email.name_u,
         'form': ContainerForm()
     }
