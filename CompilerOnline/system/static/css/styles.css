@@ -943,7 +943,7 @@ p{
     color: #fff;
     width: 100%;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, .16);
-    border-radius: 10px;
+    border-radius: 30px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;

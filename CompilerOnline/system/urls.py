@@ -15,7 +15,7 @@ urlpatterns = [
         #fin login
         
     path('users_form/', views.users_form,name='users_form'),
-    path('students_form/', views.students_form,name='students_form'),
+    path('students_form/<str:id>', views.students_form,name='students_form'),
     
     #perfil
     path('gestion_archivos/<str:id>', views.gestion_archivos, name='gestion_archivos'),
@@ -24,11 +24,11 @@ urlpatterns = [
     #compilador no login
     path('compilador_no_user/' , views.compilador_no_user, name='compilador_no_user'),
     
-    path('students/', StudentListView.as_view(), name='student_list'),
-    path('students/<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
-    path('students/create/', StudentCreateView.as_view(), name='student_create'),
-    path('students/<int:pk>/update/', StudentUpdateView.as_view(), name='student_update'),
-    path('students/<int:pk>/delete/', StudentDeleteView.as_view(), name='student_delete'),
+    #path('students/', StudentListView.as_view(), name='student_list'),
+  #  path('students/<int:pk>/', StudentDetailView.as_view(), name='student_detail'),
+    #path('students/create/', StudentCreateView.as_view(), name='student_create'),
+    #path('students/<int:pk>/update/', StudentUpdateView.as_view(), name='student_update'),
+    #path('students/<int:pk>/delete/', StudentDeleteView.as_view(), name='student_delete'),
 
     path('users/', UsersListView.as_view(), name='user_list'),
     path('users/<int:pk>/', UsersDetailView.as_view(), name='user_detail'),

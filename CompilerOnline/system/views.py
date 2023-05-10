@@ -18,6 +18,7 @@ from django.urls import reverse
 from django.contrib.auth.tokens import default_token_generator
 from .forms import StudentForm, ContainerForm
 from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 # Create your views here.
 def users_form(request):
@@ -44,10 +45,39 @@ def users_form(request):
     else: 
         return render(request, 'system/users_form.html')
 
-def students_form(request):
+def students_form(request,id):
     return render(request,'system/students_form.html')
 
-
+def students_form(request,id):
+    user  = Users.objects.get(id=id)
+    context = {
+        'user_id':id
+    }
+    
+    if request.method == 'POST':
+        name = request.POST['name']
+        last_name = request.POST['last_name']
+        pregunta = request.POST['pregunta']
+        response_u = request.POST['response_u']
+        
+        if name and last_name and pregunta and response_u:
+            
+            student = Students(name=name,last_name=last_name,question_u=pregunta,response_u=response_u,users_id_id=id)
+            student.save()
+            messages.success(request,f'Datos de {name} actualizado')
+            context = {
+                'user_id':id
+            }
+            url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':id})
+            return redirect(url)
+            
+        else:
+            
+            messages.error()
+            
+    else: 
+        
+        return render(request,'system/students_form.html',context)
 
 def index(request):
     return render(request, 'index.html')
@@ -116,12 +146,20 @@ def recuperar_pass(request):
     return render(request, 'system/login/recuperar_pass.html')
 
 def verificar_pp(request,id):
-    return render(request, 'system/login/verificar_pp.html')
+    question = Students.objects.get(users_id_id=id)
+    context = {
+        'user_id':id,
+        'question_user':question.question_u
+    }
+    return render(request, 'system/login/verificar_pp.html',context)
 
 def verificar_pp(request,id):
     user_email  = Users.objects.get(id=id)
     user_editable = Students.objects.get(users_id=user_email)
-    
+    context = {
+        'user_id':id,
+        'question_user':user_editable.question_u
+    }
     if request.method == "POST":
         
         question_u = request.POST['question_u']
@@ -135,14 +173,31 @@ def verificar_pp(request,id):
                 return redirect(url)
             else:
                 print('no')
-    return render(request,'system/login/verificar_pp.html')
-
-def cambiar_pass(request,id):
-    user_email  = Users.objects.get(id=id)
-    return render(request, 'system/login/cambiar_pass.html')
+    return render(request,'system/login/verificar_pp.html',context)
 
 def cambiar_pass(request,id):
     return render(request, 'system/login/cambiar_pass.html')
+
+def cambiar_pass(request,id):
+    context = {
+        'user_id':id
+    }
+    user = Users.objects.get(id = id)
+    if request.method == 'POST':
+        password = request.POST['password']
+        new_password = request.POST['new-password']
+        
+        if password == new_password:
+            hashed_password = make_password(password)
+            user = Users(password=hashed_password)
+            user.save()
+            messages.success(request,f'Contraseña de {user.name_u} cambiada')
+            
+            return render(request, 'system/login/login.html')
+        else:
+            messages.error()
+    else:
+        return render(request, 'system/login/cambiar_pass.html',context)
 
 def compilador(request):
     return render(request, 'system/compilador/compilador.html')
@@ -156,6 +211,7 @@ def gestion_archivos(request,id):
 def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
     context = {
+        'user_id':id,
         'name_u':user_email.name_u,
         'form': ContainerForm()
     }
