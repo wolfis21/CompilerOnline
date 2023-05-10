@@ -81,7 +81,9 @@ def login_view(request):
                 'nombre_u':request.session['name_u'],
                 'id':request.session['user_id']
             }
-            return render(request,'system/perfil/gestion_archivos.html',context)
+            url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':user.id})
+            return redirect(url)
+            '''return render(request,'system/perfil/gestion_archivos.html',context)'''
         else:
             messages.info(request, 'Missing email or password')
             return render('system/login/login.html')
@@ -146,7 +148,11 @@ def compilador(request):
 def compilador_no_user(request):
     return render(request, 'system/compilador_no_user/compilador_no_user.html')
 
-def gestion_archivos(request):
+def gestion_archivos(request,id):
+    return render(request, 'system/perfil/gestion_archivos.html')
+
+def gestion_archivos(request,id):
+    user_email  = Users.objects.get(id=id)
     return render(request, 'system/perfil/gestion_archivos.html')
 
 class StudentListView(ListView):

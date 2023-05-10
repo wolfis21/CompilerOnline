@@ -18,7 +18,7 @@ urlpatterns = [
     path('students_form/', views.students_form,name='students_form'),
     
     #perfil
-    path('gestion_archivos/', views.gestion_archivos, name='gestion_archivos'),
+    path('gestion_archivos/<str:id>', views.gestion_archivos, name='gestion_archivos'),
     #compilador
     path('compilador/', views.compilador, name='compilador'),
     #compilador no login
