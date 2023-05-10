@@ -100,7 +100,7 @@ def recuperar_pass(request):
             return redirect('recuperar_pass')
         else:
             subject = 'Recuperación de contraseña'
-            link = settings.BASE_URL + reverse('verificar_pp',kwargs={'email':email})
+            link = settings.BASE_URL + reverse('verificar_pp',kwargs={'id':user.id})
             message = f'Hola {link}'
             from_email = 'zorrillaja30@gmail.com'
             recipient_list = [email]
@@ -110,12 +110,12 @@ def recuperar_pass(request):
             return redirect('recuperar_pass')
     return render(request, 'system/login/recuperar_pass.html')
 
-def verificar_pp(request,email):
+def verificar_pp(request,id):
     return render(request, 'system/login/verificar_pp.html')
 
-def verificar_pp(request,email):
-    user_email  = Users.objects.get(email=email)
-    user_editable = Students.objects.get(users_id=user_email.id)
+def verificar_pp(request,id):
+    user_email  = Users.objects.get(id=id)
+    user_editable = Students.objects.get(users_id=user_email)
     
     if request.method == "POST":
         
@@ -126,13 +126,17 @@ def verificar_pp(request,email):
         response_edit = Students.objects.get(response_u=response_u)
         if response_u:
             if user_editable.response_u == response_u:
-                url = settings.BASE_URL + reverse('cambiar_pass',kwargs={'email':email})
+                url = settings.BASE_URL + reverse('cambiar_pass',kwargs={'id':id})
                 return redirect(url)
             else:
                 print('no')
     return render(request,'system/login/verificar_pp.html')
 
-def cambiar_pass(request,email):
+def cambiar_pass(request,id):
+    user_email  = Users.objects.get(id=id)
+    return render(request, 'system/login/cambiar_pass.html')
+
+def cambiar_pass(request,id):
     return render(request, 'system/login/cambiar_pass.html')
 
 def compilador(request):
