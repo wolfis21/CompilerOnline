@@ -78,7 +78,8 @@ def login_view(request):
             request.session['email'] = email
             request.session['name_u'] = user.name_u
             context={
-                'nombre_u':request.session['name_u']
+                'nombre_u':request.session['name_u'],
+                'id':request.session['user_id']
             }
             return render(request,'system/perfil/gestion_archivos.html',context)
         else:
