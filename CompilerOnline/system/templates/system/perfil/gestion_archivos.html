@@ -88,16 +88,16 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content custom-modal">
         <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Crear Contenedor</h4>
+          <h4 class="modal-title" id="myModalLabel">Crear Carpeta</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
           <form method="post" action="{% url 'container_create' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
           </form>
         </div>
       </div>
