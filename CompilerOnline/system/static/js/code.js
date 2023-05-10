@@ -35,6 +35,15 @@ function togglePasswordVisibility() {
   }
 }
 
+function togglePasswordVisibility2() {
+  var passwordInput = document.getElementById('new_password');
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+  } else {
+    passwordInput.type = "password";
+  }
+}
+
 function validarFormulario() {
   // Obtener los valores de los campos de contraseña
   var password = document.getElementById("password").value;
