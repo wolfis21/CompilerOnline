@@ -46,7 +46,31 @@ def users_form(request):
 def students_form(request):
     return render(request,'system/students_form.html')
 
-
+def students_form(request,id):
+    user  = Users.objects.get(id=id)
+    context = {
+        'user_id':id
+    }
+    
+    if request.method == 'POST':
+        name = request.POST['name']
+        last_name = request.POST['last_name']
+        pregunta = request.POST['pregunta']
+        response_u = request.POST['response_u']
+        
+        if name and last_name and pregunta and response_u:
+            
+            student = Students(name=name,last_name=last_name,question_u=pregunta,response_u=response_u,users_id_id=id)
+            student.save()
+            messages.success(request,f'Datos de {name} actualizado')
+            
+        else:
+            
+            messages.error()
+            
+    else: 
+        
+        return render(request,'system/students_form.html',context)
 
 def index(request):
     return render(request, 'index.html')
@@ -155,7 +179,8 @@ def gestion_archivos(request,id):
 def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
     context = {
-        'name_u':user_email.name_u
+        'name_u':user_email.name_u,
+        'user_id':id
     }
     return render(request, 'system/perfil/gestion_archivos.html',context)
 

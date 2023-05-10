@@ -15,7 +15,7 @@ urlpatterns = [
         #fin login
         
     path('users_form/', views.users_form,name='users_form'),
-    path('students_form/', views.students_form,name='students_form'),
+    path('students_form/<str:id>', views.students_form,name='students_form'),
     
     #perfil
     path('gestion_archivos/<str:id>', views.gestion_archivos, name='gestion_archivos'),
