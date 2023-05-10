@@ -15,7 +15,7 @@
             <div class="sub-menu">
                 <div class="user-info">
                     <i class="fa-regular fa-user"></i>
-                    <p>{{nombre_u}}</p>
+                    <p>{{name_u}}</p>
                 </div>
                 <hr>
                 <a href="{% url 'students_form' %}" class="sub-menu-link">
@@ -45,7 +45,7 @@
 </header>
 
 <div class="hola-user">
-    <p>Hola,{{nombre_u}} con {{id}} <i class="fa-solid fa-hands-bubbles"></i></p>
+    <p>Hola,        {{name_u.capit}}<i class="fa-solid fa-hands-bubbles"></i></p>
 </div>
 
 <div class="container-gestor">
@@ -54,6 +54,7 @@
             <p>Buscar <i class="fa-solid fa-magnifying-glass"></i></p>
             <input type="text" class="box"> 
         </div>
+        
         <div class="crear-carpetas-gestor">
             <input 
             class="boton-crear-carpeta-gestor" 

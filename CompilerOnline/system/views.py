@@ -84,7 +84,7 @@ def login_view(request):
             }
             url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':user.id})
             return redirect(url)
-            '''return render(request,'system/perfil/gestion_archivos.html',context)'''
+            
         else:
             messages.info(request, 'Missing email or password')
             return render('system/login/login.html')
@@ -154,7 +154,10 @@ def gestion_archivos(request,id):
 
 def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
-    return render(request, 'system/perfil/gestion_archivos.html')
+    context = {
+        'name_u':user_email.name_u
+    }
+    return render(request, 'system/perfil/gestion_archivos.html',context)
 
 class StudentListView(ListView):
     model = Students
