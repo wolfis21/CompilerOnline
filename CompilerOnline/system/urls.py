@@ -52,6 +52,7 @@ urlpatterns = [
     path('containers/', ContainerListView.as_view(), name='container_list'),
     path('containers/<int:pk>/', ContainerDetailView.as_view(), name='container_detail'),
     path('containers/create/', ContainerCreateView.as_view(), name='container_create'),
+    path('containers/create/modal/', container_create_modal_view, name='container_create_modal'),
     path('containers/<int:pk>/update/', ContainerUpdateView.as_view(), name='container_update'),
     path('containers/<int:pk>/delete/', ContainerDeleteView.as_view(), name='container_delete'),
 ]

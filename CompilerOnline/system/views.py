@@ -16,7 +16,8 @@ from django.utils.encoding import force_bytes
 from django.conf import settings
 from django.urls import reverse
 from django.contrib.auth.tokens import default_token_generator
-from .forms import StudentForm
+from .forms import StudentForm, ContainerForm
+from django.http import JsonResponse
 
 # Create your views here.
 def users_form(request):
@@ -180,7 +181,11 @@ def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
     context = {
         'name_u':user_email.name_u,
+<<<<<<< HEAD
         'user_id':id
+=======
+        'form': ContainerForm()
+>>>>>>> ab3b44e638411b15346058e4cca0122050a2b5f8
     }
     return render(request, 'system/perfil/gestion_archivos.html',context)
 
@@ -295,9 +300,23 @@ class ContainerDetailView(DetailView):
 
 class ContainerCreateView(CreateView):
     model = Container
-    fields = ['title']
+    form_class = ContainerForm
     template_name = 'system/container_form.html'
     success_url = reverse_lazy('container_list')
+    success_message = "El contenedor se ha creado con éxito."
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            container_list = Container.objects.all()
+            container_list_html = render_to_string('system/container_list.html', {'container_list': container_list})
+            return JsonResponse({'container_list_html': container_list_html})
+        else:
+            messages.success(self.request, self.success_message)
+            return response
+
+    def get_success_url(self):
+        return self.request.META.get('HTTP_REFERER', self.success_url)
 
 
 class ContainerUpdateView(UpdateView):
@@ -318,3 +337,7 @@ def container_create_view(request):
     else:
         form = ContainerForm()
     return render(request, 'system/container_form.html', {'form': form})
+
+def container_create_modal_view(request):
+    form = ContainerForm()
+    return render(request, 'system/container_form_modal.html', {'form': form})
