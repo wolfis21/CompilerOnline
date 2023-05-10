@@ -1745,3 +1745,55 @@ p{
 .check-tt:hover{
     color: #5F0093;
 }
+.custom-modal{
+    box-shadow: 0 0 10px #5F0093, 0 0 20px #5F0093, 0 0 40px #5F0093;
+    background-color: rgb(76,0,125,0.45);
+    color: #ffff;
+    padding: 30px;
+    padding-bottom: 70px;
+    border-radius: 25px;
+}
+.custom-agg{
+     width: 40%; 
+     height: 40px; 
+     font-size: 17px; 
+     border-radius: 20px; 
+     background-color: #0f0019;
+     border-color: #0f0025;
+     position: absolute;
+     left: 125px;
+     margin-top: 25px;
+}
+.btn-primary.custom-agg:hover {
+    color: #fff;
+    background-color:#0f0019;
+    border-color: #0f0019;
+    box-shadow: 0 0 10px #E20053, 0 0 20px #E20053, 0 0 40px #E20053;
+}
+.modal-header .close span{
+    color: #ffff;
+    position: relative;
+    bottom: 40px;
+    left: 24px;
+}
+.modal-dialog{
+    top: 30vh;
+}
+.modal-body form input{
+    width: 275px;
+    height: 38px;
+    border: none;
+    outline: none;
+    border-radius: 28px;
+    background-color: rgb(255,255,255,0.15);
+    font-size: 14px;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    text-align: center;
+    margin-left: 20px;
+}
+.modal-title{
+    position: relative;
+    left: 138px;
+    top: -9px;
+}
