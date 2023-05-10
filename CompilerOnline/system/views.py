@@ -191,7 +191,7 @@ def cambiar_pass(request,id):
             hashed_password = make_password(password)
             user = Users(password=hashed_password)
             user.save()
-            messages.success(request,f'Usuario {user.name_u} creado')
+            messages.success(request,f'Contraseña de {user.name_u} cambiada')
             
             return render(request, 'system/login/login.html')
         else:
