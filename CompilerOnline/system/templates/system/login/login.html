@@ -21,13 +21,21 @@
         <p>Inicio de Sesion</p>
         <i class="fa-solid fa-chevron-right"></i>
     </article>
-    {% if messages %}
-        <ul class="messages login">
-    {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-        </ul>
-    {% endif %}
+{% if messages %}
+    <ul class="messages login">
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+{% endif %}
     <article class="container-formulario-inicio">
         <form method="POST" action="{% url 'login_view'%}" class="formulario-inicio-sesion">
             {% csrf_token %}

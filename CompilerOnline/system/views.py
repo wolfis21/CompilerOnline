@@ -72,7 +72,8 @@ def login_view(request):
                 return render(request, 'system/login/login.html')
             
             if not check_password(password, user.password):
-                return render(request, 'system/login/login.html', {'error_message': 'El correo o la contraseña son incorrectos'})
+                messages.error(request, 'La contraseña es incorrecta.')
+                return render(request, 'system/login/login.html')
             
             request.session['user_id'] = user.id
             request.session['email'] = email
