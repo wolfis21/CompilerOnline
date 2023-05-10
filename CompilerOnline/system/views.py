@@ -18,6 +18,7 @@ from django.urls import reverse
 from django.contrib.auth.tokens import default_token_generator
 from .forms import StudentForm, ContainerForm
 from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 # Create your views here.
 def users_form(request):
@@ -181,11 +182,7 @@ def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
     context = {
         'name_u':user_email.name_u,
-<<<<<<< HEAD
-        'user_id':id
-=======
         'form': ContainerForm()
->>>>>>> ab3b44e638411b15346058e4cca0122050a2b5f8
     }
     return render(request, 'system/perfil/gestion_archivos.html',context)
 
