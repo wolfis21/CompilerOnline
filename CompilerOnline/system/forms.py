@@ -15,3 +15,11 @@ class StudentForm(forms.ModelForm):
     class Meta:
         model = Students
         fields = ['name', 'last_name', 'question_u', 'response_u', 'users_id']
+
+class ContainerForm(forms.ModelForm):
+    class Meta:
+        model = Container
+        fields = ['title']
+        labels = {
+            'title': 'Título',
+        }

@@ -268,6 +268,8 @@ class ContainerDetailView(DetailView):
 class ContainerCreateView(CreateView):
     model = Container
     fields = ['title']
+    template_name = 'system/container_form.html'
+    success_url = reverse_lazy('container_list')
 
 
 class ContainerUpdateView(UpdateView):
@@ -278,3 +280,13 @@ class ContainerUpdateView(UpdateView):
 class ContainerDeleteView(DeleteView):
     model = Container
     success_url = reverse_lazy('container_list')
+
+def container_create_view(request):
+    if request.method == 'POST':
+        form = ContainerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('container_list')
+    else:
+        form = ContainerForm()
+    return render(request, 'system/container_form.html', {'form': form})

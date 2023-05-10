@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.urls import reverse
 
 # Create your models here.
 #prototype 1
@@ -67,6 +68,9 @@ class Container(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
     
+    def get_absolute_url(self):
+        return reverse('container_list')
+
     class Meta:
         verbose_name='Carpeta'
         verbose_name_plural='Carpetas'

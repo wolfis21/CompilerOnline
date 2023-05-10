@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Crear Carpeta{% endblock %}
+{% load static %}
+{% block content %}
+
+<div>
+    <h1>crear carpeta</h1>
+</div>
+
+<h1>Nuevo Contenedor</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+</form>
+
+{% endblock %}
