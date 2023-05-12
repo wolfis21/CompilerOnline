@@ -2,3 +2,4 @@ venv
 __pycache__
 db_compiler.sqlite3
 CompilerOnline/db_compiler.sqlite3
+CompilerOnline/db_compiler.sqlite3
