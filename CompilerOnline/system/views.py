@@ -24,6 +24,10 @@ from django.template.loader import render_to_string
 def users_form(request):
     return render(request,'system/users_form.html')
 
+from django.contrib import messages
+from django.db import IntegrityError
+from django.shortcuts import render, redirect
+
 def users_form(request):
     if request.method == 'POST':
         name_u = request.POST['name_u']
@@ -33,17 +37,17 @@ def users_form(request):
         hashed_password = make_password(password)
         
         if name_u and email and password:
-            
-            user = Users(name_u=name_u, email=email,password=hashed_password,roles_id_id=role_id)
-            user.save()
-            messages.success(request,f'Usuario {name_u} creado')
-            
-            #return redirect(reverse('system/login/login.html'))
-            return render(request, 'system/login/login.html')
+            try:
+                user = Users(name_u=name_u, email=email,password=hashed_password,roles_id_id=role_id)
+                user.save()
+                messages.success(request,f'Usuario {name_u} creado')
+                return render(request, 'system/login/login.html')
+            except IntegrityError:
+                messages.error(request, 'Este email ya está registrado')
         else:
-            messages.error()
-    else: 
-        return render(request, 'system/users_form.html')
+            messages.error(request, 'Por favor ingresar todos los campos')
+    
+    return render(request, 'system/users_form.html')
 
 def students_form(request,id):
     return render(request,'system/students_form.html')

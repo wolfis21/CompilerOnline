@@ -19,6 +19,13 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
   <article class="section-formulario-registro">
+    {% if messages %}
+  <ul class="messages login pextra">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
     <form method="post" action="{% url 'users_form' %}" class="formulario-registro" onsubmit="return validarFormulario()">
       {% csrf_token %}
 
