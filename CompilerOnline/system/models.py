@@ -29,7 +29,7 @@ class Students(models.Model):
 
 class Users(models.Model):
     name_u = models.CharField(max_length=200, verbose_name='Nombre de usuario')
-    email = models.EmailField(verbose_name='Correo electronico')
+    email = models.EmailField(verbose_name='Correo electronico',unique=True)
     password =models.CharField(max_length=200, verbose_name='Contraseña')
     roles_id = models.ForeignKey(Roles, on_delete=models.CASCADE)
 
