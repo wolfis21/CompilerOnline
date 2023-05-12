@@ -62,14 +62,33 @@ def students_form(request,id):
         
         if name and last_name and pregunta and response_u:
             
-            student = Students(name=name,last_name=last_name,question_u=pregunta,response_u=response_u,users_id_id=id)
-            student.save()
-            messages.success(request,f'Datos de {name} actualizado')
-            context = {
-                'user_id':id
-            }
-            url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':id})
-            return redirect(url)
+            student = Students.objects.filter(users_id_id=id)
+            
+            if student:
+                    
+                student.name = name
+                student.last_name = last_name
+                student.question_u =  pregunta
+                student.response_u = response_u
+                student.save()
+                messages.success(request,f'Datos de {name} actualizados')
+                context = {
+                    'user_id':id
+                }
+                url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':id})
+                return redirect(url)
+                
+                
+            else:
+                
+                student = Students(name=name,last_name=last_name,question_u=pregunta,response_u=response_u,users_id_id=id)
+                student.save()
+                messages.success(request,f'Datos de {name} actualizado')
+                context = {
+                    'user_id':id
+                }
+                url = settings.BASE_URL + reverse('gestion_archivos',kwargs={'id':id})
+                return redirect(url)
             
         else:
             
