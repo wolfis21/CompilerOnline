@@ -118,6 +118,7 @@ def login_view(request):
                 user = Users.objects.get(email=email)
             except Users.DoesNotExist:
             # Si el usuario no existe, mostrar un mensaje de error
+            # bueno
                 messages.error(request, 'No se encontró una cuenta asociada con este correo electrónico.')
                 return render(request, 'system/login/login.html')
             
