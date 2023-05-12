@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import Roles
-from .models import Students, StudentsProjects
+from .models import Students, StudentsContainer
 from .models import Users
-from .models import Projects, ProjectsContainer
+from .models import Projects, ContainerProjects
 from .models import Container
 
 @admin.register(Roles)
@@ -46,20 +46,5 @@ class ContainerAdmin(admin.ModelAdmin):
     list_filter = ('title', 'desc')
     search_fields = ('title', 'desc')
  """
-@admin.register(StudentsProjects)
 
-class StudentsProjectsAdmin(admin.ModelAdmin):
-    list_display = ('student_id','project_id')
-    """ list_editable = ('title',)
-    list_filter = ('title', 'desc')
-    search_fields = ('title', 'desc')
- """
-@admin.register(ProjectsContainer)
-
-class ProjectsContainerAdmin(admin.ModelAdmin):
-    list_display = ('projects_id','container_id')
-    """ list_editable = ('title',)
-    list_filter = ('title', 'desc')
-    search_fields = ('title', 'desc')
- """
 

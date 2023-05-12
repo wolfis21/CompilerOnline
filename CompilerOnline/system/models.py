@@ -20,7 +20,7 @@ class Students(models.Model):
     last_name =models.CharField(max_length=200, verbose_name='apellido de Estudiante')
     question_u =models.CharField(max_length=200, verbose_name='Pregunta de seguridad')
     response_u =models.CharField(max_length=200, verbose_name='Respuesta correcta')
-    students_projects = models.ManyToManyField('Projects')
+    students_container = models.ManyToManyField('Container')
     users_id=models.ForeignKey('Users', on_delete=models.CASCADE)
 
     class Meta:
@@ -47,26 +47,20 @@ class Projects(models.Model):
     check_complete=models.CharField(max_length=200, verbose_name='valor 1 o 0') #pensar en un valor booleano
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
-    projects_students =models.ManyToManyField(Students)
+    projects_container =models.ManyToManyField('Container')
 
     class Meta:
         verbose_name='Proyecto'
         verbose_name_plural='Proyectos'
+
 ##Relacion m a n (pibote)
-
-class StudentsProjects(models.Model):
-    student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
-    project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
-    
-    class Meta:
-        verbose_name='Relacion Estudiante - Proyecto'
-        verbose_name_plural='Relaciones'
-
 
 class Container(models.Model):
     title = models.CharField(max_length=200, verbose_name='titulo')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
+    container_students =models.ManyToManyField(Students)
+    container_projects =models.ManyToManyField(Projects)
     
     def get_absolute_url(self):
         return reverse('container_list')
@@ -75,11 +69,19 @@ class Container(models.Model):
         verbose_name='Carpeta'
         verbose_name_plural='Carpetas'
 
+class StudentsContainer(models.Model):
+    student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
+    container_id = models.ForeignKey(Container, on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name='Relacion Estudiante - Proyecto'
+        verbose_name_plural='Relaciones'
+
 ##Relacion m a n (pibote)
 
-class ProjectsContainer(models.Model):
-    projects_id =models.ForeignKey(Projects, on_delete=models.CASCADE)
+class ContainerProjects(models.Model):
     container_id = models.ForeignKey(Container, on_delete=models.CASCADE)
+    projects_id =models.ForeignKey(Projects, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name='Projecto-Carpeta'
