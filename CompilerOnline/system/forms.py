@@ -19,7 +19,7 @@ class StudentForm(forms.ModelForm):
 class ContainerForm(forms.ModelForm):
     class Meta:
         model = Container
-        fields = ['title']
+        fields = ['title', 'students_id']
         labels = {
             'title': 'Título',
         }

@@ -96,8 +96,12 @@
         <div class="modal-body">
           <form method="post" action="{% url 'container_create' %}">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
+                <p>
+                    <label for="id_title">Título:</label>
+                    <input type="text" name="title" maxlength="200" required="" id="id_title">
+                    <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
+                </p>
+                <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
           </form>
         </div>
       </div>

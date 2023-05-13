@@ -382,13 +382,18 @@ class ContainerDeleteView(DeleteView):
 
 def container_create_view(request):
     if request.method == 'POST':
-        form = ContainerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('container_list')
+        title = request.POST['title']
+        student_id = request.POST['students_id']
+        student = Students.objects.get(id=student_id)
+        container = Container(title=title, students=student)
+        container.save()
+        messages.success(request, 'El contenedor se ha creado con éxito.')
+        return redirect('container_list')
     else:
-        form = ContainerForm()
-    return render(request, 'system/container_form.html', {'form': form})
+        messages.error(request, 'Ha ocurrido un error al crear el contenedor.')
+        return render(request, 'system/container_form.html')
+ 
+        
 
 def container_create_modal_view(request):
     form = ContainerForm()
