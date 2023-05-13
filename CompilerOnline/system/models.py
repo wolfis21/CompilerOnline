@@ -15,18 +15,6 @@ class Roles(models.Model):
     def __str__(self):
         return self.name_rol
 
-class Students(models.Model):
-    name =models.CharField(max_length=200, verbose_name='nombre de Estudiante')
-    last_name =models.CharField(max_length=200, verbose_name='apellido de Estudiante')
-    question_u =models.CharField(max_length=200, verbose_name='Pregunta de seguridad')
-    response_u =models.CharField(max_length=200, verbose_name='Respuesta correcta')
-    students_container = models.ManyToManyField('Container')
-    users_id=models.ForeignKey('Users', on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name='Estudiante'
-        verbose_name_plural='Estudiantes'
-
 class Users(models.Model):
     name_u = models.CharField(max_length=200, verbose_name='Nombre de usuario')
     email = models.EmailField(verbose_name='Correo electronico',unique=True)
@@ -40,28 +28,25 @@ class Users(models.Model):
         
     def __str__(self):
         return self.email
-        
-class Projects(models.Model):
-    descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
-    data_ref = models.CharField(max_length=200, verbose_name='ruta de archivo')
-    check_complete=models.CharField(max_length=200, verbose_name='valor 1 o 0') #pensar en un valor booleano
-    created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
-    updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
-    projects_container =models.ManyToManyField('Container')
+    
+class Students(models.Model):
+    name =models.CharField(max_length=200, verbose_name='nombre de Estudiante')
+    last_name =models.CharField(max_length=200, verbose_name='apellido de Estudiante')
+    question_u =models.CharField(max_length=200, verbose_name='Pregunta de seguridad')
+    response_u =models.CharField(max_length=200, verbose_name='Respuesta correcta')
+    users_id = models.OneToOneField(Users, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name='Proyecto'
-        verbose_name_plural='Proyectos'
+        verbose_name='Estudiante'
+        verbose_name_plural='Estudiantes'
 
-##Relacion m a n (pibote)
 
 class Container(models.Model):
     title = models.CharField(max_length=200, verbose_name='titulo')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
-    container_students =models.ManyToManyField(Students)
-    container_projects =models.ManyToManyField(Projects)
-    
+    students_id=models.ForeignKey(Students, on_delete=models.CASCADE, related_name='containers')
+  
     def get_absolute_url(self):
         return reverse('container_list')
 
@@ -69,21 +54,16 @@ class Container(models.Model):
         verbose_name='Carpeta'
         verbose_name_plural='Carpetas'
 
-class StudentsContainer(models.Model):
-    student_id = models.ForeignKey(Students, on_delete=models.CASCADE)
-    container_id = models.ForeignKey(Container, on_delete=models.CASCADE)
-    
-    class Meta:
-        verbose_name='Relacion Estudiante - Proyecto'
-        verbose_name_plural='Relaciones'
-
-##Relacion m a n (pibote)
-
-class ContainerProjects(models.Model):
-    container_id = models.ForeignKey(Container, on_delete=models.CASCADE)
-    projects_id =models.ForeignKey(Projects, on_delete=models.CASCADE)
+class Projects(models.Model):
+    descripcion = models.CharField(max_length=200, verbose_name='Descripcion')
+    data_ref = models.CharField(max_length=200, verbose_name='ruta de archivo')
+    check_complete = models.BooleanField(default=False, verbose_name='Completado')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
+    container_id=models.ForeignKey(Container, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name='Projecto-Carpeta'
-        verbose_name_plural='Proyectos-Carpetas'
+        verbose_name='Proyecto'
+        verbose_name_plural='Proyectos'
+
 
