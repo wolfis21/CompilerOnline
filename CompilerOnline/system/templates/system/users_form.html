@@ -34,32 +34,17 @@
       <div class="password-registro"><p>Contraseña</p><input type="password" class="box"  id="password" name="password">
         <i class="fa-solid fa-eye check-tt" onclick="togglePasswordVisibility()"></i>
       </div>
-      <div class="repetir-password-registro"><p>Verificar<br>Contraseña</p><input type="password" class="box" id="confirm_password" name="confirm_password"></div>
+      <div class="repetir-password-registro"><p>Verificar<br>Contraseña</p><input type="password" class="box" id="confirm_password" name="confirm_password">
+        <i class="fa-solid fa-eye check-tt" onclick="togglePasswordVisibility3()"></i>
+      </div>
       <div class="" style="display: none;"><input type="text" id="roles_id" name="roles_id" value="2"></div>
       <div class="contenedor-botones-formulario">
           <input class="boton-limpiar-registro" type="reset" name="limpiar" value="Limpiar">
           <input class="boton-registrar-user" type="submit" name="registrar" value="Registrar">
       </div>
-      <a href="{% url 'login_view' %}" class="recuperarContra">Ya tengo una cuenta</a>  
+      <a href="{% url 'login_view' %}" class="recuperarContra">¡Ya tengo una cuenta!</a>  
     </form>
   </article>
-  </div>
-
-<footer class="footer">
-  <div class="contenedor-footer">
-      <p class="titulo-section">¡Siguenos!</p>
-  </div>
-  <div class="redes-sociales">
-      <a href="" class="boton-redes-sociales">
-          <i class="fa-brands fa-facebook-f"></i>
-      </a>
-      <a href="" class="boton-redes-sociales">
-          <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="" class="boton-redes-sociales">
-          <i class="fa-brands fa-twitter"></i>
-      </a>
-  </div>
-</footer>
+</div>
 
 {% endblock %}

@@ -13,8 +13,27 @@
   <link rel="stylesheet" href="{%static 'fontawesome/css/all.css'%}">
 </head>
 <body>
+
   {% block content %}
   {% endblock %}
+
+  <footer class="footer">
+    <div class="contenedor-footer">
+        <p class="titulo-section">¡Síguenos!</p>
+    </div>
+    <div class="redes-sociales">
+        <a href="" class="boton-redes-sociales">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="" class="boton-redes-sociales">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="" class="boton-redes-sociales">
+            <i class="fa-brands fa-twitter"></i>
+        </a>
+    </div>
+  </footer>
+
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="{% static 'js/code.js' %}"></script>
@@ -29,6 +48,6 @@
       // Configurar el REPL de PyScript
       ps.REPL(repl_element);
   </script> -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
