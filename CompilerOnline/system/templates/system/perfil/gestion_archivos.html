@@ -15,7 +15,7 @@
             <div class="sub-menu">
                 <div class="user-info">
                     <i class="fa-regular fa-user"></i>
-                    <p>{{name_u}}</p>
+                    <p>{{name_u|title}}</p>
                 </div>
                 <hr>
                 <a href="{% url 'students_form' id=user_id %}" class="sub-menu-link">
@@ -45,7 +45,7 @@
 </header>
 
 <div class="hola-user">
-    <p>Hola,        {{name_u}}<i class="fa-solid fa-hands-bubbles"></i></p>
+    <p>Hola,        {{name_u|title}}<i class="fa-solid fa-hands-bubbles"></i></p>
 </div>
 
 <div class="container-gestor">
@@ -107,23 +107,6 @@
       </div>
     </div>
   </div>
-
-<footer class="footer">
-    <div class="contenedor-footer">
-        <p class="titulo-section">¡Siguenos!</p>
-    </div>
-    <div class="redes-sociales">
-        <a href="" class="boton-redes-sociales">
-            <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="" class="boton-redes-sociales">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="" class="boton-redes-sociales">
-            <i class="fa-brands fa-twitter"></i>
-        </a>
-    </div>
-</footer>
 
 <script>
     let subMenu = document.getElementById("subMenu");
