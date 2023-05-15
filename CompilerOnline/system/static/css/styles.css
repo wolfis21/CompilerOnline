@@ -635,7 +635,10 @@ p{
     align-items: center;
     width: 100%;
     height: 100vh;
+    position: relative;
 }
+
+
 
 .article-registro-inicio{
     display: flex;
@@ -1058,6 +1061,7 @@ p{
     justify-content: center;
     width: 100%;
     height: 75vh;
+    position: relative;
 }
 
 .article-inicio-sesion{
@@ -1542,6 +1546,14 @@ p{
     padding: 0 20px;
 }
 
+.container-datos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+}
+
 .container-gestor{
     display: flex;
     width: 100%;
@@ -1729,12 +1741,24 @@ p{
     animation: fadeInOutLogin 6s ease infinite;
 }
 
+.messages.login.gestion-archivos-error{
+    padding: 20px;
+    text-align: center;
+}
+
 .messages.login .error{
     padding: 10px;
 }
 
-.pextra{
-    margin-top: 20px;
+.messages-login-pextra{
+    position: absolute;
+    margin-bottom: 2rem;
+    color: #ffff;
+    background-color: red;
+    list-style: none;
+    border-radius: 10px;
+    animation: fadeInOutLogin 6s ease infinite;
+    padding: 10px;
 }
 
 .check-tt{

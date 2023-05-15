@@ -36,6 +36,7 @@
         {{ error_message }}
     </div>
 {% endif %}
+
     <article class="container-formulario-inicio">
         <form method="POST" action="{% url 'login_view'%}" class="formulario-inicio-sesion">
             {% csrf_token %}

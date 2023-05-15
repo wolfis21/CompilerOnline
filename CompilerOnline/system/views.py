@@ -19,6 +19,8 @@ from django.contrib.auth.tokens import default_token_generator
 from .forms import StudentForm, ContainerForm
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.core.exceptions import ValidationError
+from django.db.models import Q
 
 # Create your views here.
 def users_form(request):
@@ -38,6 +40,11 @@ def users_form(request):
         
         if name_u and email and password:
             try:
+                '''
+                if Users.objects.filter(Q(name_u=name_u) | Q(email=email)).exists():
+                    raise ValidationError('Ya existe un usuario con este nombre de usuario o correo electrónico')
+                '''
+                
                 user = Users(name_u=name_u, email=email,password=hashed_password,roles_id_id=role_id)
                 user.save()
                 messages.success(request,f'Usuario {name_u} creado')
@@ -234,9 +241,20 @@ def gestion_archivos(request,id):
 
 def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
+    
+    try: 
+        user_student = Students.objects.get(users_id_id=id)
+        try:
+            name = user_student.name
+        except AttributeError:
+            name=None
+    except Students.DoesNotExist:
+        name = None
+            
     context = {
         'user_id':id,
         'name_u':user_email.name_u,
+        'name':name,
         'form': ContainerForm()
     }
     return render(request, 'system/perfil/gestion_archivos.html',context)

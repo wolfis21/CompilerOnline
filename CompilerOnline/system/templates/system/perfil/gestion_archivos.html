@@ -48,65 +48,80 @@
     <p>Hola,        {{name_u|title}}<i class="fa-solid fa-hands-bubbles"></i></p>
 </div>
 
-<div class="container-gestor">
-    <div class="gestor-section-uno">
-        <div class="buscar-archivos-gestor">
-            <p>Buscar <i class="fa-solid fa-magnifying-glass"></i></p>
-            <input type="text" class="box"> 
+{% if name is None %}
+
+    <div class="container-datos">
+        <p class="messages login error gestion-archivos-error">
+            Debes de registrar primero tus datos de estudiante,<br>
+            en el panel de perfil, dandole al boton de perfil,<br>
+            en la esquina superior derecha de la página,<br>
+            en el boton de Edit Profile.
+        </p>
+    </div>
+
+{% else %}
+
+    <div class="container-gestor">
+        <div class="gestor-section-uno">
+            <div class="buscar-archivos-gestor">
+                <p>Buscar <i class="fa-solid fa-magnifying-glass"></i></p>
+                <input type="text" class="box"> 
+            </div>
+            
+            <div class="crear-carpetas-gestor">
+                <input 
+                class="boton-crear-carpeta-gestor" 
+                type="submit" 
+                name="crear-carpeta" 
+                value="Crear Carpeta"
+                data-toggle="modal" 
+                data-target="#myModal"
+                >
+            </div>
+    <!--         <button type="button" class="boton-crear-carpeta-gestor" data-toggle="modal" data-target="#myModal">
+                Crear Contenedor
+            </button> -->
+
         </div>
-        
-        <div class="crear-carpetas-gestor">
+            <!-- Agregar mensaje de éxito -->
+            <div id="success-message" class="alert alert-success" style="display: none;">El contenedor se ha creado con éxito.</div>
+        <div class="gestor-section-dos">
+            <iframe id="table-archivos"></iframe>
+        </div>
+        <div class="gestor-section-tres">
             <input 
-            class="boton-crear-carpeta-gestor" 
+            class="boton-crear-archivo-gestor" 
             type="submit" 
-            name="crear-carpeta" 
-            value="Crear Carpeta"
-            data-toggle="modal" 
-            data-target="#myModal"
+            name="crear-archivo" 
+            value="Crear archivo"
             >
         </div>
-<!--         <button type="button" class="boton-crear-carpeta-gestor" data-toggle="modal" data-target="#myModal">
-            Crear Contenedor
-        </button> -->
+    </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content custom-modal">
+            <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Crear Carpeta</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+            <form method="post" action="{% url 'container_create' %}">
+                {% csrf_token %}
+                    <p>
+                        <label for="id_title">Título:</label>
+                        <input type="text" name="title" maxlength="200" required="" id="id_title">
+                        <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
+                    </p>
+                    <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
+            </form>
+            </div>
+        </div>
+        </div>
     </div>
-        <!-- Agregar mensaje de éxito -->
-        <div id="success-message" class="alert alert-success" style="display: none;">El contenedor se ha creado con éxito.</div>
-    <div class="gestor-section-dos">
-        <iframe id="table-archivos"></iframe>
-    </div>
-    <div class="gestor-section-tres">
-        <input 
-        class="boton-crear-archivo-gestor" 
-        type="submit" 
-        name="crear-archivo" 
-        value="Crear archivo"
-        >
-    </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content custom-modal">
-        <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Crear Carpeta</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-          <form method="post" action="{% url 'container_create' %}">
-            {% csrf_token %}
-                <p>
-                    <label for="id_title">Título:</label>
-                    <input type="text" name="title" maxlength="200" required="" id="id_title">
-                    <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
-                </p>
-                <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+{% endif %}
 
 <script>
     let subMenu = document.getElementById("subMenu");
@@ -115,7 +130,7 @@
     }
 
     $(document).ready(function() {
-  $('#myModal form').submit(function(event) {
+    $('#myModal form').submit(function(event) {
     event.preventDefault();
     $.ajax({
       type: 'POST',
