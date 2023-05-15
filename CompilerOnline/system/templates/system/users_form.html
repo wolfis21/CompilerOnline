@@ -29,12 +29,12 @@
     <form method="post" action="{% url 'users_form' %}" class="formulario-registro" onsubmit="return validarFormulario()">
       {% csrf_token %}
 
-      <div class="nombre-registro"><p>Nombre de<br>Usuario</p><input type="text" class="box" id="name_u" name="name_u" ></div>
-      <div class="correo-registro"><p>Correo</p><input type="text" class="box" id="email" name="email" ></div>
-      <div class="password-registro"><p>Contraseña</p><input type="password" class="box"  id="password" name="password">
+      <div class="nombre-registro"><p>Nombre de<br>Usuario</p><input type="text" class="box" id="name_u" name="name_u" required></div>
+      <div class="correo-registro"><p>Correo</p><input type="text" class="box" id="email" name="email" required></div>
+      <div class="password-registro"><p>Contraseña</p><input type="password" class="box"  id="password" name="password" required>
         <i class="fa-solid fa-eye check-tt" onclick="togglePasswordVisibility()"></i>
       </div>
-      <div class="repetir-password-registro"><p>Verificar<br>Contraseña</p><input type="password" class="box" id="confirm_password" name="confirm_password">
+      <div class="repetir-password-registro"><p>Verificar<br>Contraseña</p><input type="password" class="box" id="confirm_password" name="confirm_password" required>
         <i class="fa-solid fa-eye check-tt" onclick="togglePasswordVisibility3()"></i>
       </div>
       <div class="" style="display: none;"><input type="text" id="roles_id" name="roles_id" value="2"></div>
