@@ -19,7 +19,7 @@ class Users(models.Model):
     name_u = models.CharField(max_length=200, verbose_name='Nombre de usuario')
     email = models.EmailField(verbose_name='Correo electronico',unique=True)
     password =models.CharField(max_length=200, verbose_name='Contraseña')
-    roles_id = models.ForeignKey(Roles, on_delete=models.CASCADE)
+    roles_id = models.ForeignKey(Roles, on_delete=models.CASCADE, verbose_name='Rol')
 
     class Meta:
         db_table='system_users'
@@ -34,7 +34,7 @@ class Students(models.Model):
     last_name =models.CharField(max_length=200, verbose_name='apellido de Estudiante')
     question_u =models.CharField(max_length=200, verbose_name='Pregunta de seguridad')
     response_u =models.CharField(max_length=200, verbose_name='Respuesta correcta')
-    users_id = models.OneToOneField(Users, on_delete=models.CASCADE)
+    users_id = models.OneToOneField(Users, on_delete=models.CASCADE, verbose_name='Usuario')
 
     class Meta:
         verbose_name='Estudiante'
@@ -45,7 +45,7 @@ class Container(models.Model):
     title = models.CharField(max_length=200, verbose_name='titulo')
     created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name='Fecha de actualizacion')
-    students_id=models.ForeignKey(Students, on_delete=models.CASCADE, related_name='containers')
+    students_id=models.ForeignKey(Students, on_delete=models.CASCADE, related_name='containers', verbose_name='Responsable')
   
     def get_absolute_url(self):
         return reverse('container_list')
