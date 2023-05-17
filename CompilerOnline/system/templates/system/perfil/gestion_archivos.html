@@ -49,7 +49,6 @@
 </div>
 
 {% if name is None %}
-
     <div class="container-datos">
         <p class="messages login error gestion-archivos-error">
             Debes de registrar primero tus datos de estudiante,<br>
@@ -78,51 +77,46 @@
                 data-target="#myModal"
                 >
             </div>
-    <!--         <button type="button" class="boton-crear-carpeta-gestor" data-toggle="modal" data-target="#myModal">
-                Crear Contenedor
+    <!--    <button type="button" class="boton-crear-carpeta-gestor" data-toggle="modal" data-target="#myModal">
+            Crear Contenedor
             </button> -->
 
         </div>
             <!-- Agregar mensaje de éxito -->
-            <div id="success-message" class="alert alert-success" style="display: none;">El contenedor se ha creado con éxito.</div>
+        <div id="success-message" class="alert alert-success" style="display: none;">El contenedor se ha creado con éxito.</div>
         <div class="gestor-section-dos">
-
             <table class="table-gestion">
-
                 <thead>
                     <tr>
                         <th style="width: 10%;">ID</th>
                         <th style="width: 55%;">Nombre</th>
-                        <th style="width: 17.5%;">Fecha Creacion</th>
+                        <th class="fecha-gestion-encabezado" style="width: 17.5%;">Fecha Creacion</th>
                         <th class="action-gestion" style="width: 17.5%;"></th>
                     </tr>
                 </thead>
                 <tbody>
-
-                    <tr class="carpets">
-                        <td class="id-gestion">1</td>
-                        <td class="nombre-gestion">
-                            <a href="">Ejercicios</a>
-                        </td>
-                        <td class="fecha-gestion">15-09-2029</td>
-                        <td class="botones-gestion">
-                            <i class="fa-solid fa-delete-left delete-carpet"></i>
-                            <div class="btn-modal">
-                                <a href="">OPEN</a>
-                            </div>   
-                        </td>
-                    </tr>
+                    {% for container in containers %}
+                        <tr class="carpets">
+                            <td class="id-gestion">{{container.id}}</td>
+                            <td class="nombre-gestion">
+                                <a href="">{{container.title}}</a>
+                            </td>
+                            <td class="fecha-gestion">{{container.created}}</td>
+                            <td class="botones-gestion">
+                                <i class="fa-solid fa-delete-left delete-carpet"></i>
+                                <!--<button class="btn-modal" data-container-id="{{ container.id }}">OPEN</button>-->
+                                <button class="btn-modal" data-toggle="modal" data-target="#myModal2" data-container-id="{{ container.id }}">OPEN</button>                 
+                            </td>
+                        </tr>
+                    {% endfor %}
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
-
                 </tbody>
-
             </table>
-
         </div>
         <div class="gestor-section-tres">
             <input 
@@ -137,23 +131,105 @@
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-        <div class="modal-content custom-modal">
-            <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Crear Carpeta</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-            <form method="post" action="{% url 'container_create' %}">
-                {% csrf_token %}
-                    <p>
-                        <label for="id_title">Título:</label>
-                        <input type="text" name="title" maxlength="200" required="" id="id_title">
-                        <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
-                    </p>
-                    <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
-            </form>
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Crear Carpeta</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form method="post" action="{% url 'container_create' %}">
+                    {% csrf_token %}
+                        <p>
+                            <label for="id_title">Título:</label>
+                            <input type="text" name="title" maxlength="200" required="" id="id_title">
+                            <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
+                        </p>
+                        <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
+                </form>
+                </div>
             </div>
         </div>
+    </div>
+<!--
+    <div class="modal-container" id="modal-archivos">
+        <div class="modal-archivos">
+            <div class="modal-header-archivos">
+                <i class="fa-solid fa-xmark modal-close"></i>
+            </div>
+            <table id="project-table" class="table-gestion">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 55%;">Nombre Proyecto</th>
+                        <th class="fecha-gestion-encabezado" style="width: 17.5%;">Fecha Creacion</th>
+                        <th class="action-gestion" style="width: 17.5%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                        <tr class="carpets">
+                            <td class="id-gestion">{{project.id}}</td>
+                            <td class="nombre-gestion">
+                                <a href="">{{project.descripcion}}</a>
+                            </td>
+                            <td class="fecha-gestion">{{project.created}}</td>
+                            <td class="botones-gestion">
+                                <i class="fa-solid fa-delete-left delete-carpet"></i>
+                                <button class="btn-modal">EDIT</button>
+                                <button class="btn-modal">OPEN</button>                          
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <!--<div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>-->
+                <div class="modal-body">
+                    <table id="project-table" class="table-gestion">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%;">ID</th>
+                                <th style="width: 55%;">Nombre Proyecto</th>
+                                <th class="fecha-gestion-encabezado" style="width: 17.5%;">Fecha Creacion</th>
+                                <th class="action-gestion" style="width: 17.5%;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for project in projects %}
+                                <tr class="carpets">
+                                    <td class="id-gestion">{{ project.id }}</td>
+                                    <td class="nombre-gestion">
+                                        <a href="">{{ project.descripcion }}</a>
+                                    </td>
+                                    <td class="fecha-gestion">{{ project.created }}</td>
+                                    <td class="botones-gestion">
+                                        <i class="fa-solid fa-delete-left delete-carpet"></i>
+                                        <button class="btn-modal">EDIT</button>
+                                        <button class="btn-modal">OPEN</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -165,21 +241,71 @@
         subMenu.classList.toggle("open-menu")
     }
 
+    //let openModal = document.querySelector('.btn-modal');
+    //let modal = document.querySelector('.modal-container');
+    //let closeModal = document.querySelector('.modal-close');
+
+    //openModal.addEventListener('click',(e)=>{
+    //    e.preventDefault();
+    //    modal.classList.add('modal-show');
+    //});
+
+    //closeModal.addEventListener('click',(e)=>{
+    //    e.preventDefault();
+    //    modal.classList.remove('modal-show');
+    //});
+
     $(document).ready(function() {
-    $('#myModal form').submit(function(event) {
-    event.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: $(this).attr('action'),
-      data: $(this).serialize(),
-      success: function(data) {
-        $('#myModal').modal('hide');
-        $('#container-list').html(data);
-        $('#success-message').show().delay(3000).fadeOut();
-      }
+        $('#myModal2').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var container_id = button.data('container-id');
+            var modal = $(this);
+            $.ajax({
+                url: '/get_projects/',
+                data: {
+                    'container_id': container_id
+                },
+                dataType: 'json',
+                success: function (data) {
+                    var project_table = $('#project-table tbody');
+                    project_table.empty();
+                    $.each(data, function (i, project) {
+                        project_table.append(
+                            '<tr class="carpets">' +
+                            '<td class="id-gestion">' + project.id + '</td>' +
+                            '<td class="nombre-gestion">' +
+                            '<a href="">' + project.descripcion + '</a>' +
+                            '</td>' +
+                            '<td class="fecha-gestion">' + project.created + '</td>' +
+                            '<td class="botones-gestion">' +
+                            '<i class="fa-solid fa-delete-left delete-carpet"></i>' +
+                            '<button class="btn-modal">EDIT</button>' +
+                            '<button class="btn-modal">OPEN</button>' +
+                            '</td>' +
+                            '</tr>'
+                        );
+                    });
+                }
+            });
+        });
     });
-  });
-});
+
+    $(document).ready(function() {
+        $('#myModal form').submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function(data) {
+                    $('#myModal').modal('hide');
+                    $('#container-list').html(data);
+                    $('#success-message').show().delay(3000).fadeOut();
+                }
+            });
+        });
+    });
+
 </script>
 
 {% endblock %}

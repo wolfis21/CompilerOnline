@@ -1631,9 +1631,11 @@ p{
 .gestor-section-dos{
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 97%;
     height: 110vh;
     padding: 20px;
+    border-radius: 25px;
+    background-color: #1c1c1c;
 }
 
 .gestor-section-dos iframe{
@@ -1679,6 +1681,7 @@ p{
     color: #fff;
     width: 100%;
     border-radius: 15px;
+    height: fit-content;
 }
 
 .table-gestion th{
@@ -1689,7 +1692,6 @@ p{
 
 .table-gestion td{
     padding: 15px;
-    vertical-align: top;
 }
 
 .table-gestion .carpets{
@@ -1705,13 +1707,18 @@ p{
     margin-right: 10%;
 }
 
+.fecha-gestion-encabezado,
+.fecha-gestion{
+    text-align:center;
+}
+
 .botones-gestion a{
     text-decoration: none;
     color: #fff;
     transition: 0.5s;
 }
 
-.botones-gestion a:hover{
+.botones-gestion button:hover{
     color: #1f1f1f;
 }
 
@@ -1736,6 +1743,48 @@ p{
     justify-content: center;
     align-items: center;
     background-color: #E20053;
+    border: none;
+    outline: none;
+    transition: .5s;
+    margin-right: 2%;
+}
+
+.modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    display: none;
+}
+
+.modal-archivos{
+    margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90%;
+    padding: 3em 2.5em;
+}
+
+.modal-header-archivos{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: #fff;
+    font-size: 20px;
+    transition: .3s;
+    padding: 10px;
+}
+
+.modal-header-archivos:hover{
+    color: #E20053;
+}
+
+.modal-show{
+    display: flex;
+    background-color: #111111bd;
+    transition: background-color .5s ease;
 }
 
 /* footer */
@@ -1842,17 +1891,18 @@ p{
     padding: 30px;
     padding-bottom: 70px;
     border-radius: 25px;
+    border: none;
 }
 .custom-agg{
-     width: 40%; 
-     height: 40px; 
-     font-size: 17px; 
-     border-radius: 20px; 
-     background-color: #0f0019;
-     border-color: #0f0025;
-     position: absolute;
-     left: 125px;
-     margin-top: 25px;
+    width: 40%; 
+    height: 40px; 
+    font-size: 17px; 
+    border-radius: 20px; 
+    background-color: #0f0019;
+    border-color: #0f0025;
+    position: absolute;
+    left: 125px;
+    margin-top: 25px;
 }
 .btn-primary.custom-agg:hover {
     color: #fff;
@@ -1870,7 +1920,7 @@ p{
     top: 30vh;
 }
 .modal-body form input{
-    width: 275px;
+    width: 88%;
     height: 38px;
     border: none;
     outline: none;
@@ -1886,4 +1936,10 @@ p{
     position: relative;
     left: 138px;
     top: -9px;
+}
+
+.modal-body p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

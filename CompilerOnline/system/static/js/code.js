@@ -48,7 +48,7 @@ function togglePasswordVisibility3() {
   var passwordInput = document.getElementById('confirm_password');
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
-  } else {
+  }else {
     passwordInput.type = "password";
   }
 }
