@@ -242,6 +242,7 @@ def gestion_archivos(request,id):
 def gestion_archivos(request,id):
     user_email  = Users.objects.get(id=id)
     containers = Container.objects.all()
+    projects = Projects.objects.all()
     
     try: 
         user_student = Students.objects.get(users_id_id=id)
@@ -258,8 +259,9 @@ def gestion_archivos(request,id):
         'name':name,
         'form': ContainerForm(),
         'containers':containers,
+        'projects':projects
     }
-    return render(request, 'system/perfil/gestion_archivos.html',context,)
+    return render(request, 'system/perfil/gestion_archivos.html',context)
 
 class StudentListView(ListView):
     model = Students
@@ -417,7 +419,7 @@ def container_create_modal_view(request):
     form = ContainerForm()
     return render(request, 'system/container_form_modal.html', {'form': form})
 
-def get_projects(request):
+def projects_view(request):
     container_id = request.GET.get('container_id')
     projects = Projects.objects.filter(container_id=container_id).values('id','descripcion','created')
     return JsonResponse(list(projects), safe=False)
