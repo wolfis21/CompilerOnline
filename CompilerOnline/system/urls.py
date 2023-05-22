@@ -19,6 +19,9 @@ urlpatterns = [
     
     #perfil
     path('gestion_archivos/<str:id>', views.gestion_archivos, name='gestion_archivos'),
+    
+   
+    
     #compilador
     path('compilador/', views.compilador, name='compilador'),
     #compilador no login

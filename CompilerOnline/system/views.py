@@ -244,6 +244,7 @@ def gestion_archivos(request,id):
     containers = Container.objects.all()
     projects = Projects.objects.all()
     
+    
     try: 
         user_student = Students.objects.get(users_id_id=id)
         try:
@@ -259,8 +260,23 @@ def gestion_archivos(request,id):
         'name':name,
         'form': ContainerForm(),
         'containers':containers,
-        'projects':projects
+        'projects':projects,
     }
+    
+    if request.method == 'POST':
+        data = request.POST.get('datas')
+        context = {
+        'user_id':id,
+        'name_u':user_email.name_u,
+        'name':name,
+        'form': ContainerForm(),
+        'containers':containers,
+        'projects':projects,
+        'data':data
+        }
+        print(data)
+        print("HOLAA")
+    
     return render(request, 'system/perfil/gestion_archivos.html',context)
 
 class StudentListView(ListView):
@@ -420,6 +436,6 @@ def container_create_modal_view(request):
     return render(request, 'system/container_form_modal.html', {'form': form})
 
 def projects_view(request):
-    container_id = request.GET.get('container_id')
-    projects = Projects.objects.filter(container_id=container_id).values('id','descripcion','created')
+    containerId = request.GET.get('container_id')
+    projects = Projects.objects.filter(container_id_id=containerId).values('id','descripcion','created')
     return JsonResponse(list(projects), safe=False)
