@@ -13,17 +13,17 @@
         <img class="img" src="{%static 'images/logo.png'%}" >
     </div>
     <nav class="nav">
-        <a href="../gestion_archivos/"><i class="fa-solid fa-house-user"></i>Home</a>
+        <a href="{% url 'gestion_archivos' id=user_id %}"><i class="fa-solid fa-house-user"></i>Home</a>
         <i class="fa-regular fa-user user-pic" onclick="toggleMenu()"></i>
 
         <div class="sub-menu-wrap" id="subMenu">
             <div class="sub-menu">
                 <div class="user-info">
                     <i class="fa-regular fa-user"></i>
-                    <p>{{nombre_u}}</p>
+                    <p>{{user.name_u|title}}</p>
                 </div>
                 <hr>
-                <a href="#" class="sub-menu-link">
+                <a href="{% url 'students_form' id=user_id %}" class="sub-menu-link">
                     <i class="fa-solid fa-pen-to-square"></i>
                     <p>Edit Profile</p>
                     <span>></span>
@@ -48,6 +48,20 @@
 
     </nav>
 </header>
+
+{% if name is None %}
+
+    <div class="container-datos">
+        <p class="messages login error gestion-archivos-error">
+            Debes de registrar primero tus datos de estudiante,<br>
+            en el panel de perfil, dandole al boton de perfil,<br>
+            en la esquina superior derecha de la página,<br>
+            en el boton de Edit Profile.
+        </p>
+    </div>
+
+{% else %}
+
 
 <div class="name">
     <article class="article-inicio-python">
@@ -88,6 +102,8 @@
         
     </div>
 </div>
+
+{% endif %}
 
 <script>
     let subMenu = document.getElementById("subMenu");

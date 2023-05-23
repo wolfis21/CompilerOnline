@@ -8,7 +8,7 @@
         <img class="img" src="{%static 'images/logo.png'%}" >
     </div>
     <nav class="nav">
-        <a href="../compilador/"><i class="fa-solid fa-plus"></i>New Code</a>
+        <a href="{% url 'compilador' id=user_id %}"><i class="fa-solid fa-plus"></i>New Code</a>
         <i class="fa-regular fa-user user-pic" onclick="toggleMenu()"></i>
 
         <div class="sub-menu-wrap" id="subMenu">
@@ -49,6 +49,7 @@
 </div>
 
 {% if name is None %}
+
     <div class="container-datos">
         <p class="messages login error gestion-archivos-error">
             Debes de registrar primero tus datos de estudiante,<br>
@@ -157,7 +158,7 @@
             <div class="modal-header-archivos">
                 <i class="fa-solid fa-xmark modal-close"></i>
             </div>
-            <p>{{user_id}}{{data}}</p>
+            <p>{{user_id}}{{containerId}}{{datas}}</p>
             <table id="project-table" class="table-gestion">
                 <thead>
                     <tr>
@@ -253,63 +254,10 @@
             event.preventDefault();
             let containerId = button.dataset.projectId;
             console.log(containerId)
-            let datas = event.target.parentElement.parentElement.children[0].textContent;
-            
-
-            /*
-            let xhr = new XMLHttpRequest();
-            xhr.open('POST', '/gestion_archivos/{{user_id}}', true);
-            xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-            xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-            xhr.onload = function() {
-            if (xhr.status == 200) {
-                let response = xhr.responseText;
-            }
-            };
-            let data = JSON.stringify({
-            'datas': datas
-            });
-            xhr.send(data);*/
-
-            let url = "/gestion_archivos/{{user_id}}";
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", url, true);
-            xhr.onload = function() {
-                if (xhr.status == 200) {
-                let response = xhr.responseText;
-                modal.classList.add('modal-show');
-                }
-            };
-            xhr.send();
-
-
-            modal.classList.add('modal-show');
+            var datas = event.target.parentElement.parentElement.children[0].textContent;
+            modal.classList.add('modal-show');           
         });
     });
-
-
-
-    
-
-    function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        let cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-        }
-        }
-    }
-    return cookieValue;
-    }
-
-
-
-
-
 
     closeModal.addEventListener('click',()=>{
         modal.classList.remove('modal-show');

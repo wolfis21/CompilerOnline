@@ -230,8 +230,29 @@ def cambiar_pass(request,id):
     else:
         return render(request, 'system/login/cambiar_pass.html',context)
 
-def compilador(request):
+def compilador(request,id):
     return render(request, 'system/compilador/compilador.html')
+
+def compilador(request,id):
+    user = Users.objects.get(id=id)
+    
+    try: 
+        user_student = Students.objects.get(users_id_id=id)
+        try:
+            name = user_student.name
+        except AttributeError:
+            name=None
+    except Students.DoesNotExist:
+        name = None
+        
+    context = {
+        'user_id':id,
+        'user':user,
+        'name':name
+    }
+    
+    
+    return render(request, 'system/compilador/compilador.html',context)
 
 def compilador_no_user(request):
     return render(request, 'system/compilador_no_user/compilador_no_user.html')
@@ -240,10 +261,7 @@ def gestion_archivos(request,id):
     return render(request, 'system/perfil/gestion_archivos.html')
 
 def gestion_archivos(request,id):
-    user_email  = Users.objects.get(id=id)
-    containers = Container.objects.all()
-    projects = Projects.objects.all()
-    
+    user_email  = Users.objects.get(id=id)    
     
     try: 
         user_student = Students.objects.get(users_id_id=id)
@@ -254,6 +272,20 @@ def gestion_archivos(request,id):
     except Students.DoesNotExist:
         name = None
             
+    if name != None:
+        
+        try:
+            containers = Container.objects.filter(students_id_id = id)
+        except Container.DoesNotExist:
+            containers = None
+        
+        if containers != None:
+            projects = Projects.objects.all()
+            contador = containers.count()
+            list = []
+            for number in range(contador):
+                list.append(number+1)
+    
     context = {
         'user_id':id,
         'name_u':user_email.name_u,
@@ -261,21 +293,8 @@ def gestion_archivos(request,id):
         'form': ContainerForm(),
         'containers':containers,
         'projects':projects,
+        'list':list
     }
-    
-    if request.method == 'POST':
-        data = request.POST.get('datas')
-        context = {
-        'user_id':id,
-        'name_u':user_email.name_u,
-        'name':name,
-        'form': ContainerForm(),
-        'containers':containers,
-        'projects':projects,
-        'data':data
-        }
-        print(data)
-        print("HOLAA")
     
     return render(request, 'system/perfil/gestion_archivos.html',context)
 
