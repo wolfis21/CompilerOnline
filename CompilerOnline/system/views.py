@@ -271,22 +271,22 @@ def gestion_archivos(request,id):
             name=None
     except Students.DoesNotExist:
         name = None
+    
+    try:
+        containers = Container.objects.filter(students_id_id = id)
+    except Container.DoesNotExist:
+        containers = None
             
-    if name != None:
-        
-        try:
-            containers = Container.objects.filter(students_id_id = id)
-        except Container.DoesNotExist:
-            containers = None
-        
+    if name != None:   
         if containers != None:
             projects = Projects.objects.all()
             contador = containers.count()
             list = []
             for number in range(contador):
                 list.append(number+1)
-        else:
-            containers = None;
+    else:
+        projects = None
+        list = None
     
     context = {
         'user_id':id,
