@@ -21,6 +21,7 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.core.exceptions import ValidationError
 from django.db.models import Q
+import json
 
 # Create your views here.
 def users_form(request):
@@ -279,14 +280,40 @@ def gestion_archivos(request,id):
             
     if name != None:   
         if containers != None:
-            projects = Projects.objects.all()
-            contador = containers.count()
-            list = []
-            for number in range(contador):
-                list.append(number+1)
+            containers_id = []
+            for container in containers:
+                containers_id.append(container.id)
+            
+            try:
+                projects = Projects.objects.all()
+            except Projects.DoesNotExist:
+                projects = None
+            
+            if projects != None:
+                contador = containers.count()
+                
+                for i in range(contador):
+                    aux_array = []
+                    for project in projects:
+                        if project.container_id_id == i:
+                            aux_array.append(project)
+                    diccionario = {}
+                    diccionario[i]=aux_array
+                         
     else:
         projects = None
-        list = None
+    
+    if request.method == 'POST': # aqui se obtiene el id del boton y si se manda  por contexto pero la pagina tiene el valor viejo
+        try:
+            data = json.loads(request.body)
+            container_id = data.get('container_id')
+            print(container_id)
+            
+        except:
+            container_id = None
+    else:
+        container_id = None
+    print(container_id)
     
     context = {
         'user_id':id,
@@ -295,8 +322,11 @@ def gestion_archivos(request,id):
         'form': ContainerForm(),
         'containers':containers,
         'projects':projects,
-        'list':list
+        'diccionario':diccionario,
+        'button_id':container_id
     }
+    
+    print(context['button_id'])
     
     return render(request, 'system/perfil/gestion_archivos.html',context)
 

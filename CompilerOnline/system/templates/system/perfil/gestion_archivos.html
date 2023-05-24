@@ -3,7 +3,9 @@
 {% load static %}
 
 {% block content %}
+{% csrf_token %}
 <header class="header">
+    {% csrf_token %}
     <div class="logo">
         <img class="img" src="{%static 'images/logo.png'%}" >
     </div>
@@ -61,6 +63,7 @@
 
 {% else %}
 
+    {% csrf_token %}
     <div class="container-gestor">
         <div class="gestor-section-uno">
             <div class="buscar-archivos-gestor">
@@ -97,6 +100,7 @@
                 </thead>
                 <tbody>
                     {% for container in containers %}
+                        {% csrf_token %}
                         <tr class="carpets">
                             <td class="id-gestion">{{container.id}}</td>
                             <td class="nombre-gestion">
@@ -105,7 +109,9 @@
                             <td class="fecha-gestion">{{container.created}}</td>
                             <td class="botones-gestion">
                                 <i class="fa-solid fa-delete-left delete-carpet"></i>
-                                <button class="btn-modal" type="submit" data-project-id="{{container.id}}" id="openButton_{{container.id}}">OPEN</button>
+                                <button class="btn-modal" type="submit" 
+                                data-project-id="{{container.id}}" id="openButton_{{container.id}}">OPEN
+                                </button>
                             </td>
                         </tr>
                     {% endfor %}
@@ -153,12 +159,14 @@
         </div>
     </div>
 
+    <p style="font-size: 100px;">{{button_id}}</p> <!--aqui intente mostrar el id-->
+
     <div class="modal-container" id="modal-archivos">
         <div class="modal-archivos">
             <div class="modal-header-archivos">
                 <i class="fa-solid fa-xmark modal-close"></i>
             </div>
-            <p>{{user_id}}{{containerId}}{{datas}}</p>
+            <p>{{user_id}}{{button_id}}</p>
             <table id="project-table" class="table-gestion">
                 <thead>
                     <tr>
@@ -239,6 +247,23 @@
 {% endif %}
 
 <script>
+    // funcion para obtener el csrftoken
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+    let csrftoken = getCookie('csrftoken');
+
     let subMenu = document.getElementById("subMenu");
     function toggleMenu(){
         subMenu.classList.toggle("open-menu")
@@ -255,7 +280,25 @@
             let containerId = button.dataset.projectId;
             console.log(containerId)
             var datas = event.target.parentElement.parentElement.children[0].textContent;
-            modal.classList.add('modal-show');           
+            modal.classList.add('modal-show');
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/gestion_archivos/{{ user_id }}', true);
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    
+                }else {
+                    console.log('Error en la solicitud.');
+                }
+            };
+            xhr.onerror = function() {
+               console.log('Error en la solicitud.');
+            };
+            xhr.send(JSON.stringify({'container_id': containerId, 'csrfmiddlewaretoken': csrftoken}));
+
         });
     });
 
