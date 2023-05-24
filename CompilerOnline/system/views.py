@@ -285,6 +285,8 @@ def gestion_archivos(request,id):
             list = []
             for number in range(contador):
                 list.append(number+1)
+        else:
+            containers = None;
     
     context = {
         'user_id':id,
