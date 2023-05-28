@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Compiler- User{% endblock %}
+{% block title %}Compiler User{% endblock %}
 {% block head %}
   <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
   <script defer src="https://pyscript.net/latest/pyscript.js"></script> 
@@ -74,7 +74,7 @@
     
 <div class="container-code">
     <div class="left-code">
-        <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo</p>
+        <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo [ Shift + Enter to Compile ]</p>
         <div class="text-compiler">
             <py-repl class="py-custom"></py-repl>
         </div>
@@ -94,7 +94,7 @@
     </div>
     <div class="botones-console">
         <div class="boton-guardar-archivo">
-            <input type="submit" name="guardar" value="Guardar">
+            <input type="submit" method="POST" name="guardar" value="Guardar">
         </div>
         <div class="boton-guardar-exportar">
             <input type="submit" name="guardar-y-exportar" value="Guardar y Exportar">

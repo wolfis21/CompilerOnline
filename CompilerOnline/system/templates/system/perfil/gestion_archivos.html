@@ -62,8 +62,6 @@
     </div>
 
 {% else %}
-
-    {% csrf_token %}
     <div class="container-gestor">
         <div class="gestor-section-uno">
             <div class="buscar-archivos-gestor">
@@ -88,6 +86,7 @@
         </div>
             <!-- Agregar mensaje de éxito -->
         <div id="success-message" class="alert alert-success" style="display: none;">El contenedor se ha creado con éxito.</div>
+        
         <div class="gestor-section-dos">
             <table id="table-main" class="table-gestion">
                 <thead>
@@ -100,7 +99,6 @@
                 </thead>
                 <tbody>
                     {% for container in containers %}
-                        {% csrf_token %}
                         <tr class="carpets">
                             <td class="id-gestion">{{container.id}}</td>
                             <td class="nombre-gestion">
@@ -110,10 +108,58 @@
                             <td class="botones-gestion">
                                 <i class="fa-solid fa-delete-left delete-carpet"></i>
                                 <button class="btn-modal" type="submit" 
-                                data-project-id="{{container.id}}" id="openButton_{{container.id}}">OPEN
+                                data-project-id="{{container.id}}"
+                                data-modal-selector=".modal-container{{container.id}}" 
+                                id="openButton_{{container.id}}">OPEN
                                 </button>
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="4">
+                                <div class="modal-container modal-container{{container.id}}" id="modal-archivos">
+                                    <div class="modal-archivos">
+                                        <div class="modal-header-archivos">
+                                            <i class="fa-solid fa-xmark modal-close"></i>
+                                        </div>
+                                        <table id="project-table" class="table-gestion">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10%;">ID</th>
+                                                    <th style="width: 55%;">Nombre Proyecto</th>
+                                                    <th class="fecha-gestion-encabezado" style="width: 17.5%;">Fecha Creacion</th>
+                                                    <th class="action-gestion" style="width: 17.5%;"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for project in projects %}
+                                                    {% if project.container_id_id == container.id %}
+                                                        <tr class="carpets">
+                                                            <td class="id-gestion">{{project.id}}</td>
+                                                            <td class="nombre-gestion">
+                                                                <a href="">{{project.descripcion}}</a>
+                                                            </td>
+                                                            <td class="fecha-gestion">{{project.created}}</td>
+                                                            <td class="botones-gestion">
+                                                                <i class="fa-solid fa-delete-left delete-carpet"></i>
+                                                                <button class="btn-modal">EDIT</button>
+                                                                <button class="btn-modal">OPEN</button>                          
+                                                            </td>
+                                                        </tr> 
+                                                    {% endif %}
+                                                {% endfor %}     
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>   
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
                     {% endfor %}
                     <tr>
                         <td></td>
@@ -158,92 +204,6 @@
             </div>
         </div>
     </div>
-
-    <p style="font-size: 100px;">{{button_id}}</p> <!--aqui intente mostrar el id-->
-
-    <div class="modal-container" id="modal-archivos">
-        <div class="modal-archivos">
-            <div class="modal-header-archivos">
-                <i class="fa-solid fa-xmark modal-close"></i>
-            </div>
-            <p>{{user_id}}{{button_id}}</p>
-            <table id="project-table" class="table-gestion">
-                <thead>
-                    <tr>
-                        <th style="width: 10%;">ID</th>
-                        <th style="width: 55%;">Nombre Proyecto</th>
-                        <th class="fecha-gestion-encabezado" style="width: 17.5%;">Fecha Creacion</th>
-                        <th class="action-gestion" style="width: 17.5%;"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for project in projects %}
-                        {% if project.container_id_id == data %}
-                            <tr class="carpets">
-                                <td class="id-gestion">{{project.id}}</td>
-                                <td class="nombre-gestion">
-                                    <a href="">{{project.descripcion}}</a>
-                                </td>
-                                <td class="fecha-gestion">{{project.created}}</td>
-                                <td class="botones-gestion">
-                                    <i class="fa-solid fa-delete-left delete-carpet"></i>
-                                    <button class="btn-modal">EDIT</button>
-                                    <button class="btn-modal">OPEN</button>                          
-                                </td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-<!--
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table id="project-table" class="table-gestion">
-                        <thead>
-                            <tr>
-                                <th style="width: 10%;">ID</th>
-                                <th style="width: 55%;">Nombre Proyecto</th>
-                                <th class="fecha-gestion-encabezado" style="width: 17.5%;">Fecha Creacion</th>
-                                <th class="action-gestion" style="width: 17.5%;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for project in projects %}
-                                <tr class="carpets">
-                                    <td class="id-gestion">{{ project.id }}</td>
-                                    <td class="nombre-gestion">
-                                        <a href="">{{ project.descripcion }}</a>
-                                    </td>
-                                    <td class="fecha-gestion">{{ project.created }}</td>
-                                    <td class="botones-gestion">
-                                        <i class="fa-solid fa-delete-left delete-carpet"></i>
-                                        <button class="btn-modal">EDIT</button>
-                                        <button class="btn-modal">OPEN</button>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
--->
 {% endif %}
 
 <script>
@@ -270,16 +230,16 @@
     }
 
     let openModal = document.querySelectorAll('.btn-modal');
-    let modal = document.querySelector('.modal-container');
-    let closeModal = document.querySelector('.modal-close');
+    let closeModal = document.querySelectorAll('.modal-close');
     let openButtons = document.querySelectorAll('#table-main button[data-project-id]');
 
     openButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
-            let containerId = button.dataset.projectId;
-            console.log(containerId)
-            var datas = event.target.parentElement.parentElement.children[0].textContent;
+            //let containerId = button.dataset.projectId;
+            let modalSelector = button.dataset.modalSelector;
+            let modal = document.querySelector(modalSelector);
+            let datas = event.target.parentElement.parentElement.children[0].textContent;
             modal.classList.add('modal-show');
 
 
@@ -302,8 +262,12 @@
         });
     });
 
-    closeModal.addEventListener('click',()=>{
-        modal.classList.remove('modal-show');
+    closeModal.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            let modal = button.closest('.modal-container');
+            modal.classList.remove('modal-show');
+        });
     });
 
     $(document).ready(function() {

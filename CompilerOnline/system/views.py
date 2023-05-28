@@ -246,11 +246,28 @@ def compilador(request,id):
     except Students.DoesNotExist:
         name = None
         
+    try:
+        containers = Container.objects.filter(students_id_id = id)
+    except Container.DoesNotExist:
+        containers = None
+    
+    if name != None:   
+        if containers != None:
+            try:
+                projects = Projects.objects.all()
+            except Projects.DoesNotExist:
+                projects = None             
+    else:
+        projects = None    
+    
     context = {
         'user_id':id,
         'user':user,
-        'name':name
+        'name':name,
+        'containers':containers,
+        'projects':projects
     }
+    
     
     
     return render(request, 'system/compilador/compilador.html',context)
@@ -288,7 +305,7 @@ def gestion_archivos(request,id):
                 projects = Projects.objects.all()
             except Projects.DoesNotExist:
                 projects = None
-            
+            '''
             if projects != None:
                 contador = containers.count()
                 
@@ -298,11 +315,11 @@ def gestion_archivos(request,id):
                         if project.container_id_id == i:
                             aux_array.append(project)
                     diccionario = {}
-                    diccionario[i]=aux_array
+                    diccionario[i]=aux_array'''
                          
     else:
         projects = None
-    
+    '''
     if request.method == 'POST': # aqui se obtiene el id del boton y si se manda  por contexto pero la pagina tiene el valor viejo
         try:
             data = json.loads(request.body)
@@ -313,7 +330,7 @@ def gestion_archivos(request,id):
             container_id = None
     else:
         container_id = None
-    print(container_id)
+    print(container_id)'''
     
     context = {
         'user_id':id,
@@ -322,11 +339,7 @@ def gestion_archivos(request,id):
         'form': ContainerForm(),
         'containers':containers,
         'projects':projects,
-        'diccionario':diccionario,
-        'button_id':container_id
     }
-    
-    print(context['button_id'])
     
     return render(request, 'system/perfil/gestion_archivos.html',context)
 
