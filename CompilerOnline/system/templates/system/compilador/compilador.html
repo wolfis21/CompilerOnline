@@ -76,7 +76,10 @@
     <div class="left-code">
         <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo [ Shift + Enter to Compile ]</p>
         <div class="text-compiler">
-            <py-repl class="py-custom"></py-repl>
+            <py-repl class="py-custom">
+                holaMundo = 'Hola Mundo'
+                print(holaMundo)
+            </py-repl>
         </div>
     </div>
     <div class="right-code-compile">
@@ -94,7 +97,7 @@
     </div>
     <div class="botones-console">
         <div class="boton-guardar-archivo">
-            <input type="submit" method="POST" name="guardar" value="Guardar">
+            <input type="submit" method="POST" name="guardar" value="Guardar" id="guardar" onclick="abrir()">
         </div>
         <div class="boton-guardar-exportar">
             <input type="submit" name="guardar-y-exportar" value="Guardar y Exportar">
@@ -110,6 +113,36 @@
     function toggleMenu(){
         subMenu.classList.toggle("open-menu")
     }
+
+    function abrir(){
+        /*
+        const cmContent = document.querySelector(".cm-content");
+        const cmLines = cmContent.querySelectorAll(".cm-line");
+        let texto = cmContent.textContent;
+
+        cmLines.forEach((cmLine)=>{
+            const lineText = cmLine.textContent;
+            console.log(lineText);
+            texto = texto.replace(lineText,"");
+            console.log(texto)
+        });
+
+        texto = texto.replace(/<span[^>]*>/g, "").replace(/<\/span>/g, "");
+        console.log(texto);*/
+
+        const cmContent = document.querySelector(".cm-content");
+        const cmLines = cmContent.querySelectorAll(".cm-line");
+        let texto = "";
+
+        cmLines.forEach((cmLine) => {
+        const lineaTexto = cmLine.innerHTML.trim().replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
+        texto += lineaTexto + '\n';
+        });
+
+        console.log(texto.trim());
+
+    }
+
 </script>
 
 {% endblock %}

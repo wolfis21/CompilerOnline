@@ -361,10 +361,24 @@ p{
     font-size: 18px;
 }
 
+.py-repl-output {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+}
+
 .py-repl-run-button{
     opacity: 1;
 }
 
+.py-repl-run-button svg{
+    color: #fff !important;
+    transition: .5s;
+}
+
+.py-repl-run-button svg:hover{
+    color: #BFBFBF !important;
+}
 
 .error-console{
     display: flex;

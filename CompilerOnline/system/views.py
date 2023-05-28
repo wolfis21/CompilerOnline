@@ -260,6 +260,8 @@ def compilador(request,id):
     else:
         projects = None    
     
+    
+    
     context = {
         'user_id':id,
         'user':user,
@@ -267,8 +269,6 @@ def compilador(request,id):
         'containers':containers,
         'projects':projects
     }
-    
-    
     
     return render(request, 'system/compilador/compilador.html',context)
 
