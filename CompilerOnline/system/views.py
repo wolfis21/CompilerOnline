@@ -231,10 +231,10 @@ def cambiar_pass(request,id):
     else:
         return render(request, 'system/login/cambiar_pass.html',context)
 
-def compilador(request,id):
+def compilador(request,id,idProyect):
     return render(request, 'system/compilador/compilador.html')
 
-def compilador(request,id):
+def compilador(request,id,idProyect):
     user = Users.objects.get(id=id)
     
     try: 
@@ -266,13 +266,20 @@ def compilador(request,id):
         projectId  = request.POST.get('projectId','')
         print(projectId)
     
+    try:
+        projectCompiler = Projects.objects.get(id=idProyect)
+    except Projects.DoesNotExist:
+        projectCompiler = None
+
     context = {
         'user_id':id,
         'user':user,
         'name':name,
         'containers':containers,
         'projects':projects,
-        'projectId':projectId
+        'projectId':projectId,
+        'idProyect':idProyect,
+        'projectCompiler':projectCompiler
     }
     
     if request.method == 'POST':
@@ -486,10 +493,21 @@ class ContainerUpdateView(UpdateView):
     model = Container
     fields = ['title']
 
-
+'''
 class ContainerDeleteView(DeleteView):
     model = Container
     success_url = reverse_lazy('container_list') 
+    template_name = 'container_confirm_delete.html' '''
+
+def container_delete(request, container_id):
+    container = Container.objects.get(id=container_id)
+    container.delete()
+    return redirect(request.META['HTTP_REFERER'])
+
+def projects_delete(request, project_id):
+    project = Projects.objects.get(id=project_id)
+    project.delete()
+    return redirect(request.META['HTTP_REFERER'])
 
 def container_create_view(request):
     if request.method == 'POST':

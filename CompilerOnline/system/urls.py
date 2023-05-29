@@ -23,7 +23,7 @@ urlpatterns = [
    
     
     #compilador
-    path('compilador/<str:id>', views.compilador, name='compilador'),  
+    path('compilador/<str:id>/<str:idProyect>', views.compilador, name='compilador'),  
     #compilador no login
     path('compilador_no_user/' , views.compilador_no_user, name='compilador_no_user'),
     
@@ -50,12 +50,15 @@ urlpatterns = [
     path('projects/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),
     path('projects/create/', ProjectCreateView.as_view(), name='project_create'),
     path('projects/<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'),
-    path('projects/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
+    #path('projects/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
 
     path('containers/', ContainerListView.as_view(), name='container_list'),
     path('containers/<int:pk>/', ContainerDetailView.as_view(), name='container_detail'),
     path('containers/create/', ContainerCreateView.as_view(), name='container_create'),
     path('containers/create/modal/', container_create_modal_view, name='container_create_modal'),
     path('containers/<int:pk>/update/', ContainerUpdateView.as_view(), name='container_update'),
-    path('containers/<int:pk>/delete/', ContainerDeleteView.as_view(), name='container_delete'),
+    #path('containers/<int:pk>/delete/', ContainerDeleteView.as_view(), name='container_delete'),
+
+    path('containers/<int:container_id>/delete/', container_delete, name='container_delete'),
+    path('projects/<int:project_id>/delete/', projects_delete, name='projects_delete'),
 ]

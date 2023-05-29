@@ -10,7 +10,7 @@
         <img class="img" src="{%static 'images/logo.png'%}" >
     </div>
     <nav class="nav">
-        <a href="{% url 'compilador' id=user_id %}"><i class="fa-solid fa-plus"></i>New Code</a>
+        <a href="{% url 'compilador' id=user_id idProyect=0%}"><i class="fa-solid fa-plus"></i>New Code</a>
         <i class="fa-regular fa-user user-pic" onclick="toggleMenu()"></i>
 
         <div class="sub-menu-wrap" id="subMenu">
@@ -105,9 +105,8 @@
                             </td>
                             <td class="fecha-gestion">{{container.created}}</td>
                             <td class="botones-gestion">
-                                <i class="fa-solid fa-delete-left delete-carpet">
-                                    <a href="{% url 'container_delete' container.id %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este contenedor?')"></a>
-                                  </i>
+                                
+                                <a href="{% url 'container_delete' container.id %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este contenedor?')"><i class="fa-solid fa-delete-left delete-carpet"></i></a>  
                                 <button class="btn-modal" type="submit" 
                                 data-project-id="{{container.id}}"
                                 data-modal-selector=".modal-container{{container.id}}" 
@@ -141,7 +140,7 @@
                                                             </td>
                                                             <td class="fecha-gestion">{{project.created}}</td>
                                                             <td class="botones-gestion">
-                                                                <i class="fa-solid fa-delete-left delete-carpet"></i>
+                                                                <a href="{% url 'projects_delete' project.id %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este contenedor?')"><i class="fa-solid fa-delete-left delete-carpet"></i></a>
                                                                 <button class="btn-modal">EDIT</button>
                                                                 <button class="btn-modal open-project" data-content-id="{{project.id}}">OPEN</button>                          
                                                             </td>
@@ -282,10 +281,10 @@
                 let projectId = openProjectButton.dataset.contentId;
                 console.log(projectId);
                 let element = "{{user_id}}";
-                window.location.href = '/compilador/' + element;
+                window.location.href = '/compilador/' + element + '/' + projectId;
 
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/compilador/{{ user_id }}', true);
+                xhr.open('POST', '/compilador/{{ user_id }}/'+projectId, true);
                 xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
                 xhr.setRequestHeader('X-CSRFToken', csrftoken);
                 xhr.onload = function() {

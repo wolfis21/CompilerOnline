@@ -62,7 +62,6 @@
 
 {% else %}
 
-
 <div class="name">
     <article class="article-inicio-python">
         <i class="fa-solid fa-chevron-left"></i>
@@ -74,13 +73,18 @@
     
 <div class="container-code">
     <div class="left-code">
-        <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo [ Shift + Enter to Compile {{projectId}}]</p>
+        <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo [ Shift + Enter to Compile ]</p>
         <div class="text-compiler">
-            <py-repl class="py-custom">
-                holaMundo = 'Hola Mundo'
-                print(holaMundo)
-                {{project.data_ref}}
-            </py-repl>
+            {% if idProyect == 0 %}
+                <py-repl class="py-custom">
+                    holaMundo = 'Hola Mundoo'
+                    print(holaMundo)
+                </py-repl>
+            {% else %}
+                <py-repl class="py-custom">
+                    {{projectCompiler.data_ref}}
+                </py-repl>
+            {% endif %}  
         </div>
     </div>
     <div class="right-code-compile">
@@ -117,7 +121,7 @@
                 <i class="fa-solid fa-xmark modal-close"></i>
             </div>
             <div class="modal-comp-body">
-                <form method="POST" action="{% url 'compilador' id=user_id %}" class="form-projects">
+                <form method="POST" action="{% url 'compilador' id=user_id idProyect=0 %}" class="form-projects">
                     {% csrf_token %}
                     {%if containers is None %}
                         <p>Debes crear una carpeta primero</p>
@@ -297,8 +301,8 @@
     }
 
 function limpiarTerminal() {
-    var terminal = document.getElementById('terminal');
-    terminal.innerHTML = '';
+    var terminal = document.querySelector('.py-terminal');
+    terminal.innerText = '';
 }
 </script>
 {% endblock %}
