@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Compiler{% endblock %}
 {% block head %}
-  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-  <script defer src="https://pyscript.net/latest/pyscript.js"></script> 
+<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 {% endblock %}
 {% load static %}
 
 {% block content %}
-    
+
 <header class="header">
     <div class="logo">
-        <img class="img" src="{%static 'images/logo.png'%}" >
+        <img class="img" src="{%static 'images/logo.png'%}">
     </div>
     <nav class="nav">
         <a href="../login/"><i class="fa-regular fa-circle-user"></i>Iniciar Sesion</a>
@@ -26,23 +26,24 @@
         <i class="fa-solid fa-chevron-right"></i>
     </article>
     <span class="alert-register">Para poder Guardar sus proyectos debe de estar Registrado</span>
-     <div class="linebar"></div>  
+    <div class="linebar"></div>
 </div>
-    
+
 <div class="container-code">
     <div class="left-code">
-        <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo</p>
+        <p><i class="fa-regular fa-keyboard"></i>Escribe tu codigo [ Shift + Enter to Compile ]</p>
         <div class="text-compiler">
-            <py-repl class="py-custom"></py-repl>
+            <py-repl class="py-custom">
+                holaMundo = 'Hola Mundo'
+                print(holaMundo)
+            </py-repl>
         </div>
-        <!-- <textarea id="python-code"></textarea> -->
     </div>
     <div class="right-code-compile">
         <p><i class="fa-solid fa-square-poll-horizontal"></i>Mira tu resultado</p>
-<!--         <iframe id="output">
-        </iframe> -->
+        <button onclick="limpiarTerminal()" class="btn-clean-terminal">Limpiar terminal</button>
         <div id="output-terminal">
-            <py-terminal auto="" class=""></py-terminal>
+            <py-terminal auto="" class="" id="terminal"></py-terminal>
         </div>
     </div>
 </div>
@@ -54,4 +55,10 @@
     </div>
 </div>
 
+<script>
+    function limpiarTerminal() {
+        var terminal = document.getElementById('terminal');
+        terminal.innerHTML = '';
+    }
+</script>
 {% endblock %}

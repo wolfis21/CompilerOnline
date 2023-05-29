@@ -2106,3 +2106,21 @@ p{
     align-items: center;
     justify-content: space-between;
 }
+
+/* btn clean compiler */
+
+.btn-clean-terminal{
+    position: absolute;
+    top: 257px;
+    right: 32px;
+    width: 17%;
+    height: 25px;
+    font-size: 12px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #E20053;
+    transition: .2s;
+}

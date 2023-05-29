@@ -105,7 +105,9 @@
                             </td>
                             <td class="fecha-gestion">{{container.created}}</td>
                             <td class="botones-gestion">
-                                <i class="fa-solid fa-delete-left delete-carpet"></i>
+                                <i class="fa-solid fa-delete-left delete-carpet">
+                                    <a href="{% url 'container_delete' container.id %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este contenedor?')"></a>
+                                  </i>
                                 <button class="btn-modal" type="submit" 
                                 data-project-id="{{container.id}}"
                                 data-modal-selector=".modal-container{{container.id}}" 

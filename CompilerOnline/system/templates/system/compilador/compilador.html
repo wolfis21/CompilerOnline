@@ -79,13 +79,15 @@
             <py-repl class="py-custom">
                 holaMundo = 'Hola Mundo'
                 print(holaMundo)
+                {{project.data_ref}}
             </py-repl>
         </div>
     </div>
     <div class="right-code-compile">
         <p><i class="fa-solid fa-square-poll-horizontal"></i>Mira tu resultado</p>
+        <button onclick="limpiarTerminal()" class="btn-clean-terminal">Limpiar terminal</button>
         <div id="output-terminal">
-            <py-terminal auto="" class=""></py-terminal>
+            <py-terminal auto="" class="" id="terminal"></py-terminal>
         </div>
     </div>
 </div>
@@ -294,6 +296,9 @@
         let inputCarpet = document.querySelector("#inputCarpeta");
     }
 
+function limpiarTerminal() {
+    var terminal = document.getElementById('terminal');
+    terminal.innerHTML = '';
+}
 </script>
-
 {% endblock %}

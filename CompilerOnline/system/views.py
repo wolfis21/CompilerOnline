@@ -489,7 +489,7 @@ class ContainerUpdateView(UpdateView):
 
 class ContainerDeleteView(DeleteView):
     model = Container
-    success_url = reverse_lazy('container_list')
+    success_url = reverse_lazy('container_list') 
 
 def container_create_view(request):
     if request.method == 'POST':
