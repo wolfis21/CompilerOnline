@@ -23,7 +23,7 @@ urlpatterns = [
    
     
     #compilador
-    path('compilador/<str:id>', views.compilador, name='compilador'),
+    path('compilador/<str:id>', views.compilador, name='compilador'),  
     #compilador no login
     path('compilador_no_user/' , views.compilador_no_user, name='compilador_no_user'),
     

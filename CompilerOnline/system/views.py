@@ -260,8 +260,6 @@ def compilador(request,id):
     else:
         projects = None    
     
-    
-    
     context = {
         'user_id':id,
         'user':user,
@@ -269,6 +267,19 @@ def compilador(request,id):
         'containers':containers,
         'projects':projects
     }
+    
+    if request.method == 'POST':
+        description = request.POST['description']
+        carpet = request.POST['id_carpeta']
+        code = request.POST['code']
+        
+        if description and carpet and code:
+            try:
+                project = Projects(descripcion=description,data_ref=code,container_id_id=carpet,check_complete=1)
+                project.save()
+                return render(request, 'system/perfil/gestion_archivos.html',context)
+            except IntegrityError:
+                messages.error('')
     
     return render(request, 'system/compilador/compilador.html',context)
 
@@ -319,18 +330,6 @@ def gestion_archivos(request,id):
                          
     else:
         projects = None
-    '''
-    if request.method == 'POST': # aqui se obtiene el id del boton y si se manda  por contexto pero la pagina tiene el valor viejo
-        try:
-            data = json.loads(request.body)
-            container_id = data.get('container_id')
-            print(container_id)
-            
-        except:
-            container_id = None
-    else:
-        container_id = None
-    print(container_id)'''
     
     context = {
         'user_id':id,

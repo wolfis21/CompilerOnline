@@ -113,7 +113,7 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="table-modal">
                             <td colspan="4">
                                 <div class="modal-container modal-container{{container.id}}" id="modal-archivos">
                                     <div class="modal-archivos">
@@ -190,15 +190,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <form method="post" action="{% url 'container_create' %}">
-                    {% csrf_token %}
-                        <p>
-                            <label for="id_title">Título:</label>
-                            <input type="text" name="title" maxlength="200" required="" id="id_title">
-                            <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
-                        </p>
-                        <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
-                </form>
+                    <form method="post" action="{% url 'container_create' %}">
+                        {% csrf_token %}
+                            <p>
+                                <label for="id_title">Título:</label>
+                                <input type="text" name="title" maxlength="200" required="" id="id_title">
+                                <div class="" style="display: none;"><input type="text" id="" name="students_id" value="{{user_id}}"></div>
+                            </p>
+                            <button type="submit" class="btn btn-primary custom-agg">Guardar</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -228,6 +228,7 @@
         subMenu.classList.toggle("open-menu")
     }
 
+    let table = document.querySelector(".table-modal")
     let openModal = document.querySelectorAll('.btn-modal');
     let closeModal = document.querySelectorAll('.modal-close');
     let openButtons = document.querySelectorAll('#table-main button[data-project-id]');

@@ -97,12 +97,63 @@
     </div>
     <div class="botones-console">
         <div class="boton-guardar-archivo">
-            <input type="submit" method="POST" name="guardar" value="Guardar" id="guardar" onclick="abrir()">
+            <input type="submit" method="POST" name="guardar" value="Guardar" id="guardar" class="open-modal-container">
         </div>
         <div class="boton-guardar-exportar">
-            <input type="submit" name="guardar-y-exportar" value="Guardar y Exportar">
+            <input type="submit" method="POST" name="guardar-y-exportar" value="Guardar y Exportar" id="exportar" class="exportar-modal">
         </div>
         
+    </div>
+</div>
+
+
+<div class="modal-container-c">
+    <div class="modal-d">
+        <div class="contenido-modal">
+            <div class="modal-comp-header">
+                <p>Guardar Archivo</p>
+                <i class="fa-solid fa-xmark modal-close"></i>
+            </div>
+            <div class="modal-comp-body">
+                <form method="POST" action="{% url 'compilador' id=user_id %}" class="form-projects">
+                    {% csrf_token %}
+                    {%if containers is None %}
+                        <p>Debes crear una carpeta primero</p>
+                    {%else%}
+                    <p class="pp">Descripcion del Proyecto</p>
+                    <input type="text" class="box" name="description" id="descriptionProject">
+
+                    <div class="select-box">
+                        <div class="select"  id="select">
+                          <div class="contenido-select">
+                            <p class="titulo-select">Selecciona tu carpeta</p>
+                          </div>
+                          <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="select-opciones" id="selectOpciones">       
+                            {% for container in containers%}
+                                <a href="#" class="opciones">
+                                    <div class="contenido-opcion">
+                                        <div class="text-select">
+                                            <p class="titulo-select">{{container.title}}</p>
+                                            <p class="id-select" style="display: none;">{{container.id}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="carpeta" id="inputSelect" value="">
+                    <input type="hidden" name="id_carpeta" id="inputCarpeta" value="">
+                    <input type="hidden" name="code" id="code" value="">
+
+                    <button type="submit" class="submit-project" >Guardar Proyecto</button>
+
+                    {% endif %}
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -113,9 +164,9 @@
     function toggleMenu(){
         subMenu.classList.toggle("open-menu")
     }
-
+/*
     function abrir(){
-        /*
+        
         const cmContent = document.querySelector(".cm-content");
         const cmLines = cmContent.querySelectorAll(".cm-line");
         let texto = cmContent.textContent;
@@ -128,19 +179,119 @@
         });
 
         texto = texto.replace(/<span[^>]*>/g, "").replace(/<\/span>/g, "");
-        console.log(texto);*/
+        console.log(texto);
+    }*/
+
+    const select = document.querySelector('#select');
+    const selectOpciones = document.querySelector('#selectOpciones');
+    const contenidoSelect = document.querySelector('#select .contenido-select');
+    const hiddenInput = document.querySelector('#inputSelect');
+    const hiddenId = document.querySelector('#inputCarpeta')
+
+    document.querySelectorAll('#selectOpciones > .opciones').forEach((opcion) => {
+        opcion.addEventListener('click',(e)=>{
+        e.preventDefault();
+        contenidoSelect.innerHTML = e.currentTarget.innerHTML;
+        select.classList.toggle('active');
+        selectOpciones.classList.toggle('active');
+        hiddenInput.value = e.currentTarget.querySelector('.titulo-select').innerText;
+        hiddenId.value = e.currentTarget.querySelector('.id-select').innerText;
+
+
+        let text = document.querySelector("#code");
+        const cmContent = document.querySelector(".cm-content");
+        const cmLines = cmContent.querySelectorAll(".cm-line");
+        let texto = "";
+
+        cmLines.forEach((cmLine) => {
+        const lineaTexto = cmLine.innerHTML.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
+        texto += lineaTexto + '\n';
+        });
+
+        console.log(texto);
+        text.value = texto;
+
+        });
+    });
+
+    select.addEventListener('click',()=>{
+        select.classList.toggle('active');
+        selectOpciones.classList.toggle('active');
+    });
+
+
+    let modalProject = document.querySelector(".modal-container-c");
+    let closeModal = document.querySelector(".modal-close");
+    let openModall = document.querySelector(".open-modal-container");
+    let exportar = document.querySelector(".exportar-modal");
+    
+    openModall.addEventListener('click',(e)=>{
+        e.preventDefault();
+        modalProject.classList.add("modal-show");
+    });
+
+
+    closeModal.addEventListener('click',(e)=>{
+        e.preventDefault();
+        modalProject.classList.remove("modal-show");
+    });
+
+    exportar.addEventListener('click',(e)=>{
+        e.preventDefault();
+        modalProject.classList.add("modal-show");
 
         const cmContent = document.querySelector(".cm-content");
         const cmLines = cmContent.querySelectorAll(".cm-line");
         let texto = "";
 
         cmLines.forEach((cmLine) => {
-        const lineaTexto = cmLine.innerHTML.trim().replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
+        const lineaTexto = cmLine.innerHTML.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
         texto += lineaTexto + '\n';
         });
 
-        console.log(texto.trim());
+        let butonExport = document.querySelector(".submit-project");
+        let description = document.querySelector("#descriptionProject");
+        
 
+        butonExport.addEventListener('click',(e)=>{
+            description = description.value
+            const blob = new Blob([texto], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = description + ".py";
+            document.body.appendChild(link);
+
+            link.addEventListener("click", () => {
+                setTimeout(() => {
+                  URL.revokeObjectURL(url);
+                  document.body.removeChild(link);
+                }, 100);
+            });
+
+            link.click();
+
+
+        });
+
+    });
+
+
+    function saveProject(){
+        const cmContent = document.querySelector(".cm-content");
+        const cmLines = cmContent.querySelectorAll(".cm-line");
+        let texto = "";
+
+        cmLines.forEach((cmLine) => {
+        const lineaTexto = cmLine.innerHTML.replace(/<span.*?>/g, "").replace(/<\/span>/g, "");
+        texto += lineaTexto + '\n';
+        });
+
+        console.log(texto);
+
+        let descriptionProject = document.querySelector("#descriptionProject");
+        let inputCarpet = document.querySelector("#inputCarpeta");
     }
 
 </script>
