@@ -260,18 +260,28 @@ def compilador(request,id):
     else:
         projects = None    
     
+    projectId = None
+    
+    if request.method == 'POST':
+        projectId  = request.POST.get('projectId','')
+        print(projectId)
+    
     context = {
         'user_id':id,
         'user':user,
         'name':name,
         'containers':containers,
-        'projects':projects
+        'projects':projects,
+        'projectId':projectId
     }
     
     if request.method == 'POST':
-        description = request.POST['description']
-        carpet = request.POST['id_carpeta']
-        code = request.POST['code']
+        #description = request.POST['description']
+        description = request.POST.get('description', '')
+        #carpet = request.POST['id_carpeta']
+        carpet = request.POST.get('id_carpeta','')
+        #code = request.POST['code']
+        code = request.POST.get('code','')
         
         if description and carpet and code:
             try:

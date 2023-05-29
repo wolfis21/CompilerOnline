@@ -141,7 +141,7 @@
                                                             <td class="botones-gestion">
                                                                 <i class="fa-solid fa-delete-left delete-carpet"></i>
                                                                 <button class="btn-modal">EDIT</button>
-                                                                <button class="btn-modal">OPEN</button>                          
+                                                                <button class="btn-modal open-project" data-content-id="{{project.id}}">OPEN</button>                          
                                                             </td>
                                                         </tr> 
                                                     {% endif %}
@@ -259,6 +259,9 @@
             };
             xhr.send(JSON.stringify({'container_id': containerId, 'csrfmiddlewaretoken': csrftoken}));
 
+
+            
+
         });
     });
 
@@ -269,6 +272,35 @@
             modal.classList.remove('modal-show');
         });
     });
+
+    let openProjectButtons = document.querySelectorAll('.open-project');
+
+        openProjectButtons.forEach(openProjectButton => {
+            openProjectButton.addEventListener('click', () => {
+                let projectId = openProjectButton.dataset.contentId;
+                console.log(projectId);
+                let element = "{{user_id}}";
+                window.location.href = '/compilador/' + element;
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/compilador/{{ user_id }}', true);
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        
+                    }else {
+                        console.log('Error en la solicitud.');
+                    }
+                };
+                xhr.onerror = function() {
+                console.log('Error en la solicitud.');
+                };
+                xhr.send(JSON.stringify({'projectId': projectId, 'csrfmiddlewaretoken': csrftoken}));
+
+            });
+        });
+
 
     $(document).ready(function() {
         $('#myModal form').submit(function(event) {
